@@ -1544,4 +1544,3 @@ public class InstalledAppDetails extends Fragment
         }
     }
 }
-
