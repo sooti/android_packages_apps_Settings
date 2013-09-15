@@ -60,6 +60,9 @@
     <!-- Device settings -->
     <string name="devicesettings_app_summary">Configure device specific options</string>
 
+    <!-- Restart SystemUI -->
+    <string name="restart_systemui">Restart SystemUI</string>
+
     <!-- Display : Rotation -->
     <string name="display_rotation_title">Rotation</string>
     <string name="display_rotation_disabled">Disabled</string>

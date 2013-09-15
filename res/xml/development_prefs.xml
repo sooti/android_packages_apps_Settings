@@ -73,6 +73,10 @@
             android:title="@string/enable_quickboot_title"
             android:summary="@string/enable_quickboot_summary" />
 
+        <Preference 
+            android:key="restart_systemui"
+            android:title="@string/restart_systemui" />
+
     <PreferenceCategory 
             android:key="debug_debugging_category"
             android:title="@string/debug_debugging_category">
