@@ -42,6 +42,8 @@ import com.android.settings.R;
 import com.android.settings.SettingsPreferenceFragment;
 import com.android.settings.Utils;
 
+import org.cyanogenmod.hardware.KeyDisabler;
+
 public class ButtonSettings extends SettingsPreferenceFragment implements
         Preference.OnPreferenceChangeListener {
     private static final String TAG = "SystemSettings";
@@ -256,6 +258,13 @@ public class ButtonSettings extends SettingsPreferenceFragment implements
             return true;
         }
         return false;
+    }
+
+    //Maybe needed for later use 
+    public static void restoreKeyDisabler(Context context) {
+        if (!KeyDisabler.isSupported()) {
+            return;
+        }
     }
 
     @Override
