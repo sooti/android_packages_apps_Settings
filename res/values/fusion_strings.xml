@@ -1042,4 +1042,8 @@
     <string name="ime_interpolator_title">Interpolator</string>
     <string name="ime_duration_title">IME duration</string>
 
+    <!-- Bluetooth additions -->
+    <!-- Bluetooth accept all Filestypes -->
+    <string name="bluetooth_accept_all_files">Accept all file types</string>
+
 </resources>
