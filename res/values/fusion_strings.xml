@@ -323,4 +323,21 @@
     <string name="app_notification_no_ongoing_on_keyguard_title">Disable ongoing on lockscreen</string>
     <string name="app_notification_no_ongoing_on_keyguard_summary">Never show ongoing notifications from this app on the lockscreen</string>
 
+    <!-- Hardware keys backlight -->
+    <string name="button_backlight_title">Backlight</string>
+    <string name="button_backlight_enabled">Illuminate buttons</string>
+    <string name="keyboard_backlight_enabled">Illuminate keyboard</string>
+    <string name="button_backlight_seekbar_title">Button brightness</string>
+    <string name="keyboard_backlight_seekbar_title">Keyboard brightness</string>
+    <string name="backlight_timeout_title">Illumination timeout</string>
+    <string name="backlight_timeout_unlimited">Don\'t turn off</string>
+    <plurals name="backlight_timeout_time">
+        <item quantity="one"><xliff:g id="seconds">%d</xliff:g> second</item>
+        <item quantity="other"><xliff:g id="seconds">%d</xliff:g> seconds</item>
+    </plurals>
+    <string name="backlight_summary_disabled">Disabled</string>
+    <string name="backlight_summary_enabled_with_timeout">Enabled for <xliff:g id="timeout">%s</xliff:g></string>
+    <string name="backlight_summary_enabled">Enabled</string>
+    <string name="auto_brightness_reset_button">Reset</string>
+
 </resources>

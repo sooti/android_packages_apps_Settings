@@ -34,6 +34,9 @@ public class NavigationBarSettings extends SettingsPreferenceFragment
 
     private static final String CATEGORY_NAV_BAR_SIMULATE = "navigation_bar_simulate";
     private static final String KEY_NAVIGATION_BAR_HEIGHT = "navigation_bar_height";
+    private static final String KEY_BUTTON_BACKLIGHT = "button_backlight";
+
+    private boolean mCheckPreferences;
 
     private ListPreference mNavigationBarHeight;
 
@@ -57,6 +60,8 @@ public class NavigationBarSettings extends SettingsPreferenceFragment
             if (pref != null) {
                 getPreferenceScreen().removePreference(pref);
             }
+        // Attach final settings screen.
+        reloadSettings();
         }
     }
 
@@ -71,5 +76,26 @@ public class NavigationBarSettings extends SettingsPreferenceFragment
             mNavigationBarHeight.setSummary(mNavigationBarHeight.getEntries()[index]);
         }
         return true;
+    }
+
+    private PreferenceScreen reloadSettings() {
+        mCheckPreferences = false;
+        PreferenceScreen prefs = getPreferenceScreen();
+        if (prefs != null) {
+            prefs.removeAll();
+        }
+
+        // Load the preferences from an XML resource
+        addPreferencesFromResource(R.xml.navigation_bar_settings);
+        prefs = getPreferenceScreen();
+
+        final ButtonBacklightBrightness backlight =
+                (ButtonBacklightBrightness) findPreference(KEY_BUTTON_BACKLIGHT);
+        if (!backlight.isButtonSupported() && !backlight.isKeyboardSupported()) {
+            prefs.removePreference(backlight);
+        }
+
+        mCheckPreferences = true;
+        return prefs;
     }
 }

@@ -28,14 +28,14 @@
             android:defaultValue="false" />
 
         <ListPreference
-                android:key="navigation_bar_height"
-                android:dialogTitle="@string/navigation_bar_height"
-                android:title="@string/navigation_bar_height"
-                android:entries="@array/navigation_bar_height_entries"
-                android:entryValues="@array/navigation_bar_height_values"
-                android:defaultValue="48"
-                android:dependency="navbar_force_enable"
-                android:persistent="false" />
+            android:key="navigation_bar_height"
+            android:dialogTitle="@string/navigation_bar_height"
+            android:title="@string/navigation_bar_height"
+            android:entries="@array/navigation_bar_height_entries"
+            android:entryValues="@array/navigation_bar_height_values"
+            android:defaultValue="48"
+            android:dependency="navbar_force_enable"
+            android:persistent="false" />
 
         <com.android.settings.cyanogenmod.SystemSettingSwitchPreference
             android:key="hardware_keys_disable"
@@ -43,6 +43,12 @@
             android:summary="@string/hardware_keys_disable_summary"
             android:defaultValue="false"
             android:dependency="navbar_force_enable" />
+
+        <com.android.settings.fusion.ButtonBacklightBrightness
+            android:key="button_backlight"
+            android:title="@string/button_backlight_title"
+            android:dialogTitle="@string/button_backlight_title"
+            android:persistent="false" />
 
     </PreferenceCategory>
 
