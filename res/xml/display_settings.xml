@@ -19,6 +19,31 @@
         android:title="@string/display_settings"
         settings:keywords="@string/keywords_display">
 
+        <PreferenceCategory
+            android:key="category_fusion_options"
+            android:title="@string/display_category_fusion_options_title" >
+
+         <ListPreference
+                android:key="navigation_bar_height"
+                android:dialogTitle="@string/navigation_bar_height"
+                android:title="@string/navigation_bar_height"
+                android:entries="@array/navigation_bar_height_entries"
+                android:entryValues="@array/navigation_bar_height_values"
+                android:defaultValue="48"
+                android:persistent="false" />
+
+            <CheckBoxPreference
+                android:key="disable_immersive_message"
+                android:title="@string/disable_immersive_message_title"
+                android:summary="@string/disable_immersive_message_summary"
+                android:persistent="false" />
+
+        </PreferenceCategory>
+
+        <PreferenceCategory
+            android:key="category_general_display_options"
+            android:title="@string/category_general_title" >
+
         <PreferenceScreen
                 android:key="brightness"
                 android:title="@string/brightness"
@@ -83,14 +108,17 @@
                 settings:keywords="@string/keywords_display_cast_screen"
                 android:fragment="com.android.settings.wfd.WifiDisplaySettings" />
 
-         <ListPreference
-                android:key="navigation_bar_height"
-                android:dialogTitle="@string/navigation_bar_height"
-                android:title="@string/navigation_bar_height"
-                android:entries="@array/navigation_bar_height_entries"
-                android:entryValues="@array/navigation_bar_height_values"
-                android:defaultValue="48"
-                android:persistent="false" />
+
+        <PreferenceScreen
+                android:key="advanced_display_prefs"
+                android:title="@string/advanced_settings">
+
+                <SwitchPreference
+                    android:key="double_tap_wake_gesture"
+                    android:title="@string/double_tap_to_wake_title" />
+        </PreferenceScreen>
+
+        </PreferenceCategory>
 
          <PreferenceCategory
              android:key="category_wakeup_options"
@@ -111,13 +139,4 @@
                 android:persistent="false" />
 
          </PreferenceCategory>
-
-        <PreferenceScreen
-                android:key="advanced_display_prefs"
-                android:title="@string/advanced_settings">
-
-                <SwitchPreference
-                    android:key="double_tap_wake_gesture"
-                    android:title="@string/double_tap_to_wake_title" />
-        </PreferenceScreen>
 </PreferenceScreen>
