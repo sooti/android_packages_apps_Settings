@@ -130,4 +130,9 @@
     <string name="root_access_apps">Apps only</string>
     <string name="root_access_adb">ADB only</string>
     <string name="root_access_all">Apps and ADB</string>
+
+    <!-- Fusion Extra Info -->
+    <string name="extrainfo">Extra information</string>
+    <string name="extrainfo_summary">Display extra info for cpu, display, etc</string>
+
 </resources>

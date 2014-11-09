@@ -32,6 +32,15 @@
                     android:targetClass="@string/additional_system_update_menu" />
         </PreferenceScreen>
 
+        <!-- Fusion Extra Info -->
+        <PreferenceScreen android:key="extrainfo"
+                android:title="@string/extrainfo"
+                android:summary="@string/extrainfo_summary">
+            <intent android:action="android.intent.action.MAIN"
+                    android:targetPackage="com.android.settings"
+                    android:targetClass="com.android.settings.fusion.extrainfo.MainActivity" />
+        </PreferenceScreen>
+
         <!-- Device status - launches activity -->
         <PreferenceScreen android:key="status_info"
                 android:title="@string/device_status" 
