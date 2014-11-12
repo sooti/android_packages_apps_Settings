@@ -167,7 +167,7 @@
         <!-- Device Kernel version -->
         <Preference android:key="kernel_version"
                 style="?android:preferenceInformationStyle"
-                android:title="@string/kernel_version"
+                android:title="@string/kernel_version_title"
                 android:summary="@string/device_info_default"
                 android:selectable="false" />
 
