@@ -15,7 +15,7 @@
  * limitations under the License.
  */
 
-package com.android.settings.slim;
+package com.android.settings.fusion;
 
 import android.content.Context;
 import android.database.ContentObserver;
