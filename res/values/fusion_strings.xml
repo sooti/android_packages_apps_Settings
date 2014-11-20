@@ -24,6 +24,10 @@
 
     <!-- Fusion General -->
     <string name="fusion_settings_title">Fusion</string>
+    <string name="statusbar_settings_title">Status bar</string>
+
+    <!-- Fusion Status bar -->
+    <string name="status_bar_title">Status bar</string>
 
     <!-- Advanced, Device specific (DeviceParts) settings -->
     <string name="device_settings_title">Device</string>
@@ -137,5 +141,25 @@
     <!-- Fusion Extra Info -->
     <string name="extrainfo">Extra information</string>
     <string name="extrainfo_summary">Display extra info for cpu, display, etc</string>
+
+    <!-- Network traffic -->
+    <string name="network_traffic_title">Network traffic</string>
+    <string name="show_network_traffic_state">Status bar traffic monitor</string>
+    <string name="network_traffic_summary">Enable various network traffic options in statusbar</string>
+    <string name="show_network_traffic_unit">Display unit</string>
+    <string name="show_network_traffic_frequency">Update interval</string>
+    <string name="show_network_traffic_disable">Disabled</string>
+    <string name="show_network_traffic_up">Outgoing</string>
+    <string name="show_network_traffic_down">Incoming</string>
+    <string name="show_network_traffic_all">Outgoing and incoming</string>
+    <string name="show_network_traffic_bit">Bits per second</string>
+    <string name="show_network_traffic_byte">Bytes per second</string>
+    <string name="show_network_traffic_500">500 ms</string>
+    <string name="show_network_traffic_1000">1000 ms</string>
+    <string name="show_network_traffic_1500">1500 ms</string>
+    <string name="show_network_traffic_2000">2000 ms</string>
+    <string name="network_traffic_autohide">Auto hide</string>
+    <string name="network_traffic_autohide_summary">Hide the traffic monitor when there is no activity</string>
+    <string name="network_traffic_autohide_threshold">Inactivity threshold</string> 
 
 </resources>
