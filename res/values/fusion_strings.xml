@@ -22,6 +22,9 @@
     <string name="enabled">Enabled</string>
     <string name="default_string">Default</string>
 
+    <!-- Fusion General -->
+    <string name="fusion_settings_title">Fusion</string>
+
     <!-- Advanced, Device specific (DeviceParts) settings -->
     <string name="device_settings_title">Device</string>
 

@@ -83,6 +83,14 @@
                 android:icon="@drawable/ic_settings_home"
                 />
 
+        <!-- Fusion Settings -->
+        <dashboard-tile
+                android:id="@+id/main_settings"
+                android:title="@string/fusion_settings_title"
+                android:fragment="com.android.settings.fusion.MainSettings"
+                android:icon="@drawable/ic_fusion_settings"
+                />
+
         <!-- Home -->
         <dashboard-tile
                 android:id="@+id/home_settings"
