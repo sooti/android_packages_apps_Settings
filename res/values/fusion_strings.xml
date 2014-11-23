@@ -27,6 +27,7 @@
     <string name="display_category_fusion_options_title">Fusion Options</string>
     <string name="category_general_title">General Options</string>
     <string name="statusbar_settings_title">Status bar</string>
+    <string name="equalizer_settings_title">Equalizer</string>
 
     <!-- Fusion Status bar -->
     <string name="status_bar_title">Status bar</string>
