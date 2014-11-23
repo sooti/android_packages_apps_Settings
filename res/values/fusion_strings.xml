@@ -226,4 +226,8 @@
     <string name="fusionsp_version_title">Fusion version</string>
     <string name="fusionsp_version_default">Unknown</string>
 
+    <!-- Build date -->
+    <string name="build_date">Build date</string>
+    <string name="build_date_default">2012-01-01-0000</string>
+
 </resources>
