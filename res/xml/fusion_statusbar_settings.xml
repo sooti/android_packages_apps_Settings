@@ -7,6 +7,11 @@
         android:title="@string/status_bar_title" >
 
         <PreferenceScreen
+                android:key="clock_style_pref"
+                android:fragment="com.android.settings.fusion.StatusBarClockStyle"
+                android:title="@string/status_bar_clock" />
+
+        <PreferenceScreen
                 android:key="network_traffic_state"
                 android:fragment="com.android.settings.fusion.NetworkTraffic"
                 android:summary="@string/network_traffic_summary"
