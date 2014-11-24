@@ -252,7 +252,7 @@
         <dashboard-tile
                 android:id="@+id/superuser_settings"
                 android:title="@string/superuser"
-                android:fragment="com.android.settings.fusion.superuser.PolicyNativeFragment"
+                android:fragment="com.koushikdutta.superuser.PolicyNativeFragment"
                 android:icon="@drawable/ic_action_superuser"
                 />
 

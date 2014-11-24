@@ -17,7 +17,6 @@
 -keep class com.android.settings.slim.**
 -keep class com.android.settings.fusion.**
 -keep class com.koushikdutta.**
--keep class com.android.settings.fusion.superuser.**
 
 # Keep click responders
 -keepclassmembers class com.android.settings.inputmethod.UserDictionaryAddWordActivity {
