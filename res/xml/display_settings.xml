@@ -39,7 +39,7 @@
                 android:defaultValue="48"
                 android:persistent="false" />
 
-        <CheckBoxPreference
+        <SwitchPreference
                 android:key="disable_immersive_message"
                 android:title="@string/disable_immersive_message_title"
                 android:summary="@string/disable_immersive_message_summary"

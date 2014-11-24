@@ -47,7 +47,6 @@ import android.os.Handler;
 import android.os.RemoteException;
 import android.os.SystemProperties;
 import android.preference.EditTextPreference;
-import android.preference.CheckBoxPreference;
 import android.preference.ListPreference;
 import android.preference.Preference;
 import android.preference.Preference.OnPreferenceClickListener;
@@ -120,7 +119,7 @@ public class DisplaySettings extends SettingsPreferenceFragment implements
     private SwitchPreference mVolumeWake;
     private SwitchPreference mTapToWake;
     private ListPreference mNavigationBarHeight;
-    private CheckBoxPreference mDisableIM;
+    private SwitchPreference mDisableIM;
     private ListPreference mToastAnimation;
     private EditTextPreference mDisplayDensity;
 
@@ -164,7 +163,7 @@ public class DisplaySettings extends SettingsPreferenceFragment implements
         mToastAnimation.setValueIndex(CurrentToastAnimation);
         mToastAnimation.setOnPreferenceChangeListener(this);
 
-        mDisableIM = (CheckBoxPreference) findPreference(DISABLE_IMMERSIVE_MESSAGE);
+        mDisableIM = (SwitchPreference) findPreference(DISABLE_IMMERSIVE_MESSAGE);
         mDisableIM.setChecked((Settings.System.getInt(resolver,
                 Settings.System.DISABLE_IMMERSIVE_MESSAGE, 0) == 1));
 
@@ -503,7 +502,7 @@ public class DisplaySettings extends SettingsPreferenceFragment implements
     @Override
     public boolean onPreferenceTreeClick(PreferenceScreen preferenceScreen, Preference preference) {
         if  (preference == mDisableIM) {
-            boolean checked = ((CheckBoxPreference)preference).isChecked();
+            boolean checked = ((SwitchPreference)preference).isChecked();
             Settings.System.putInt(getActivity().getContentResolver(),
                     Settings.System.DISABLE_IMMERSIVE_MESSAGE, checked ? 1:0);
             return true;
