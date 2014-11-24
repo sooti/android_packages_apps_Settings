@@ -51,10 +51,7 @@ import android.widget.AdapterView.OnItemLongClickListener;
 import android.widget.ListView;
 import android.widget.TextView;
 
-import com.android.settings.Settings.AppOpsSummaryActivity;
 import com.android.settings.R;
-import com.android.settings.applications.AppOpsDetails;
-import com.android.settings.applications.AppOpsState;
 import com.android.settings.applications.AppOpsDetails;
 
 import java.util.ArrayList;
@@ -426,11 +423,6 @@ public class PrivacyGuardManager extends Fragment
                 item.setChecked(!item.isChecked());
                 mPreferences.edit().putBoolean(prefName, item.isChecked()).commit();
                 loadApps();
-                return true;
-            case R.id.advanced:
-                Intent i = new Intent(Intent.ACTION_MAIN);
-                i.setClass(mActivity, AppOpsSummaryActivity.class);
-                mActivity.startActivity(i);
                 return true;
              default:
                 return super.onContextItemSelected(item);
