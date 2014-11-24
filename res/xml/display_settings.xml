@@ -23,7 +23,14 @@
             android:key="category_fusion_options"
             android:title="@string/display_category_fusion_options_title" >
 
-         <ListPreference
+        <EditTextPreference
+                android:key="display_density"
+                android:title="@string/display_density"
+                android:summary="@string/display_density_summary"
+                android:persistent="false"
+                android:inputType="numberSigned" />
+
+        <ListPreference
                 android:key="navigation_bar_height"
                 android:dialogTitle="@string/navigation_bar_height"
                 android:title="@string/navigation_bar_height"
@@ -32,13 +39,13 @@
                 android:defaultValue="48"
                 android:persistent="false" />
 
-            <CheckBoxPreference
+        <CheckBoxPreference
                 android:key="disable_immersive_message"
                 android:title="@string/disable_immersive_message_title"
                 android:summary="@string/disable_immersive_message_summary"
                 android:persistent="false" />
 
-            <ListPreference
+        <ListPreference
                 android:key="toast_animation"
                 android:title="@string/toast_animation_title"
                 android:entries="@array/toast_animation_entries"
