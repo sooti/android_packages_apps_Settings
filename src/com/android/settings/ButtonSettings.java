@@ -236,7 +236,7 @@ public class ButtonSettings extends SettingsPreferenceFragment implements
                 com.android.internal.R.integer.config_buttonBrightnessSettingDefault);
 
         Settings.System.putInt(context.getContentResolver(),
-                Settings.System.DEV_FORCE_SHOW_NAVBAR, enabled ? 1 : 0);
+                Settings.System.NAVBAR_FORCE_ENABLE, enabled ? 1 : 0);
         KeyDisabler.setActive(enabled);
 
         /* Save/restore button timeouts to disable them in softkey mode */
@@ -261,7 +261,7 @@ public class ButtonSettings extends SettingsPreferenceFragment implements
 
     private void updateDisableNavkeysOption() {
         boolean enabled = Settings.System.getInt(getActivity().getContentResolver(),
-                Settings.System.DEV_FORCE_SHOW_NAVBAR, 0) != 0;
+                Settings.System.NAVBAR_FORCE_ENABLE, 0) != 0;
 
         mDisableNavigationKeys.setChecked(enabled);
 
@@ -298,7 +298,7 @@ public class ButtonSettings extends SettingsPreferenceFragment implements
         }
 
         writeDisableNavkeysOption(context, Settings.System.getInt(context.getContentResolver(),
-                Settings.System.DEV_FORCE_SHOW_NAVBAR, 0) != 0);
+                Settings.System.NAVBAR_FORCE_ENABLE, 0) != 0);
     }
 
 
