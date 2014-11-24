@@ -45,6 +45,9 @@
     <!-- Advanced, Device specific (DeviceParts) settings -->
     <string name="device_settings_title">Device</string>
 
+    <!-- Device settings -->
+    <string name="devicesettings_app_summary">Configure device specific options</string>
+
     <!-- Display : Rotation -->
     <string name="display_rotation_title">Rotation</string>
     <string name="display_rotation_disabled">Disabled</string>

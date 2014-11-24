@@ -37,6 +37,17 @@
         android:fragment="com.android.settings.fusion.StatusBarSettings"
         android:icon="@drawable/ic_fusion_statusbar" />
 
+    <!-- Device Settings -->
+    <PreferenceScreen
+        android:key="devicesettings_app"
+        android:title="@string/device_settings_title"
+        android:summary="@string/devicesettings_app_summary">
+        <intent
+            android:action="com.cyanogenmod.action.LAUNCH_DEVICE_SETTINGS"
+            android:targetPackage="com.cyanogenmod.settings.device"
+            android:targetClass="com.cyanogenmod.settings.device.DeviceSettings" />
+    </PreferenceScreen>
+
     <PreferenceScreen
         android:key="hfm_settings"
         android:title="@string/hfm_pref_screen_title"
