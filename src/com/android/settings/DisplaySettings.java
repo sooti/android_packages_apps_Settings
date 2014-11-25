@@ -88,7 +88,6 @@ public class DisplaySettings extends SettingsPreferenceFragment implements
     private static final String KEY_WAKEUP_CATEGORY = "category_wakeup_options";
     private static final String KEY_VOLUME_WAKE = "pref_volume_wake";
     private static final String KEY_TAP_TO_WAKE = "double_tap_wake_gesture";
-    private static final String KEY_NAVIGATION_BAR_HEIGHT = "navigation_bar_height";
     private static final String DISABLE_IMMERSIVE_MESSAGE = "disable_immersive_message";
     private static final String KEY_TOAST_ANIMATION = "toast_animation";
     private static final String KEY_DISPLAY_DENSITY = "display_density";
@@ -118,7 +117,6 @@ public class DisplaySettings extends SettingsPreferenceFragment implements
     private SwitchPreference mAutoBrightnessPreference;
     private SwitchPreference mVolumeWake;
     private SwitchPreference mTapToWake;
-    private ListPreference mNavigationBarHeight;
     private SwitchPreference mDisableIM;
     private ListPreference mToastAnimation;
     private EditTextPreference mDisplayDensity;
@@ -166,14 +164,6 @@ public class DisplaySettings extends SettingsPreferenceFragment implements
         mDisableIM = (SwitchPreference) findPreference(DISABLE_IMMERSIVE_MESSAGE);
         mDisableIM.setChecked((Settings.System.getInt(resolver,
                 Settings.System.DISABLE_IMMERSIVE_MESSAGE, 0) == 1));
-
-        mNavigationBarHeight = (ListPreference) findPreference(KEY_NAVIGATION_BAR_HEIGHT);
-        mNavigationBarHeight.setOnPreferenceChangeListener(this);
-        int statusNavigationBarHeight = Settings.System.getInt(getActivity().getApplicationContext()
-                .getContentResolver(),
-                Settings.System.NAVIGATION_BAR_HEIGHT, 48);
-        mNavigationBarHeight.setValue(String.valueOf(statusNavigationBarHeight));
-        mNavigationBarHeight.setSummary(mNavigationBarHeight.getEntry());
 
         mFontSizePref = (WarnedListPreference) findPreference(KEY_FONT_SIZE);
         mFontSizePref.setOnPreferenceChangeListener(this);
@@ -559,13 +549,6 @@ public class DisplaySettings extends SettingsPreferenceFragment implements
             Settings.System.putInt(getContentResolver(),
                     Settings.System.WAKEUP_WHEN_PLUGGED_UNPLUGGED,
                     (Boolean) objValue ? 1 : 0);
-        }
-        if (preference == mNavigationBarHeight) {
-            int statusNavigationBarHeight = Integer.valueOf((String) objValue);
-            int index = mNavigationBarHeight.findIndexOfValue((String) objValue);
-            Settings.System.putInt(getActivity().getApplicationContext().getContentResolver(),
-                    Settings.System.NAVIGATION_BAR_HEIGHT, statusNavigationBarHeight);
-            mNavigationBarHeight.setSummary(mNavigationBarHeight.getEntries()[index]);
         }
         if (KEY_DISPLAY_DENSITY.equals(key)) {
             final int max = getResources().getInteger(R.integer.display_density_max);

@@ -17,19 +17,38 @@
 package com.android.settings.fusion;
 
 import android.os.Bundle;
+import android.preference.ListPreference;
 import android.preference.Preference;
+import android.preference.Preference.OnPreferenceChangeListener;
+import android.preference.PreferenceCategory;
+import android.preference.PreferenceScreen;
+import android.preference.SwitchPreference;
+import android.provider.Settings;
+import android.util.Log;
 
 import com.android.settings.R;
 import com.android.settings.SettingsPreferenceFragment;
 
-public class NavigationBarSettings extends SettingsPreferenceFragment {
+public class NavigationBarSettings extends SettingsPreferenceFragment
+    implements OnPreferenceChangeListener {
 
     private static final String CATEGORY_NAV_BAR_SIMULATE = "navigation_bar_simulate";
+    private static final String KEY_NAVIGATION_BAR_HEIGHT = "navigation_bar_height";
+
+    private ListPreference mNavigationBarHeight;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         addPreferencesFromResource(R.xml.navigation_bar_settings);
+
+        mNavigationBarHeight = (ListPreference) findPreference(KEY_NAVIGATION_BAR_HEIGHT);
+        mNavigationBarHeight.setOnPreferenceChangeListener(this);
+        int statusNavigationBarHeight = Settings.System.getInt(getActivity().getApplicationContext()
+                .getContentResolver(),
+                Settings.System.NAVIGATION_BAR_HEIGHT, 48);
+        mNavigationBarHeight.setValue(String.valueOf(statusNavigationBarHeight));
+        mNavigationBarHeight.setSummary(mNavigationBarHeight.getEntry());
 
         final boolean hasRealNavigationBar = getResources()
                 .getBoolean(com.android.internal.R.bool.config_showNavigationBar);
@@ -41,4 +60,16 @@ public class NavigationBarSettings extends SettingsPreferenceFragment {
         }
     }
 
+    @Override
+    public boolean onPreferenceChange(Preference preference, Object objValue) {
+        final String key = preference.getKey();
+        if (preference == mNavigationBarHeight) {
+            int statusNavigationBarHeight = Integer.valueOf((String) objValue);
+            int index = mNavigationBarHeight.findIndexOfValue((String) objValue);
+            Settings.System.putInt(getActivity().getApplicationContext().getContentResolver(),
+                    Settings.System.NAVIGATION_BAR_HEIGHT, statusNavigationBarHeight);
+            mNavigationBarHeight.setSummary(mNavigationBarHeight.getEntries()[index]);
+        }
+        return true;
+    }
 }

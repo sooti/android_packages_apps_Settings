@@ -27,6 +27,15 @@
             android:summary="@string/navbar_force_enable_summary"
             android:defaultValue="false" />
 
+        <ListPreference
+                android:key="navigation_bar_height"
+                android:dialogTitle="@string/navigation_bar_height"
+                android:title="@string/navigation_bar_height"
+                android:entries="@array/navigation_bar_height_entries"
+                android:entryValues="@array/navigation_bar_height_values"
+                android:defaultValue="48"
+                android:persistent="false" />
+
         <com.android.settings.cyanogenmod.SystemSettingSwitchPreference
             android:key="hardware_keys_disable"
             android:title="@string/hardware_keys_disable_title"
