@@ -288,7 +288,7 @@
     </string-array>
 
     <!-- App ops, extension of AOSP app_ops_summaries and app_ops_labels -->
-    <string-array name="app_ops_summaries_slim" translatable="false">
+    <string-array name="app_ops_summaries_fusion" translatable="false">
         <item>@string/app_ops_summaries_coarse_location</item>
         <item>@string/app_ops_summaries_fine_location</item>
         <item>@string/app_ops_summaries_gps</item>
@@ -351,7 +351,7 @@
         <item>@string/app_ops_summaries_data_change</item>
     </string-array>
 
-    <string-array name="app_ops_labels_slim" translatable="false">
+    <string-array name="app_ops_labels_fusion" translatable="false">
         <item>@string/app_ops_labels_location</item>
         <item>@string/app_ops_labels_location</item>
         <item>@string/app_ops_labels_location</item>
@@ -415,7 +415,7 @@
     </string-array>
 
     <!-- Names of categories of app ops tabs -->
-    <string-array name="app_ops_categories_slim" translatable="false">
+    <string-array name="app_ops_categories_fusion" translatable="false">
         <item>@string/app_ops_categories_location</item>
         <item>@string/app_ops_categories_personal</item>
         <item>@string/app_ops_categories_messaging</item>
