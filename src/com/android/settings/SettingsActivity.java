@@ -82,7 +82,7 @@ import com.android.settings.deviceinfo.Memory;
 import com.android.settings.deviceinfo.UsbSettings;
 import com.android.settings.fuelgauge.BatterySaverSettings;
 import com.android.settings.fuelgauge.PowerUsageSummary;
-import com.android.settings.fusion.NavigationBarSettings;
+import com.android.settings.fusion.NavigationSettings;
 import com.android.settings.fusion.MainSettings;
 import com.android.settings.notification.NotificationAppList;
 import com.android.settings.notification.OtherSoundSettings;
@@ -238,7 +238,7 @@ public class SettingsActivity extends Activity
             R.id.home_settings,
             R.id.dashboard,
             R.id.main_settings,
-            R.id.navigation_bar_settings
+            R.id.navigation_settings
     };
 
     private static final String[] ENTRY_FRAGMENTS = {
@@ -305,7 +305,7 @@ public class SettingsActivity extends Activity
             ApnSettings.class.getName(),
             BlacklistSettings.class.getName(),
             MainSettings.class.getName(),
-            NavigationBarSettings.class.getName()
+            NavigationSettings.class.getName()
     };
 
 
@@ -1202,12 +1202,6 @@ public class SettingsActivity extends Activity
                 } else if (id == R.id.development_settings) {
                     if (!showDev || um.hasUserRestriction(
                             UserManager.DISALLOW_DEBUGGING_FEATURES)) {
-                        removeTile = true;
-                    }
-                } else if (id == R.id.button_settings) {
-                    boolean hasDeviceKeys = getResources().getInteger(
-                            com.android.internal.R.integer.config_deviceHardwareKeys) != 0;
-                    if (!hasDeviceKeys) {
                         removeTile = true;
                     }
                 } else if (id == R.id.equalizer_settings) {

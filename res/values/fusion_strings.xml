@@ -307,15 +307,16 @@
     <string name="display_density">Display density</string>
     <string name="display_density_summary">Overrides the default display density (0 to disable, requires a reboot)</string>
 
-    <!-- Navigation bar -->
-    <string name="navigation_bar_pref_title">Navigation bar</string>
+    <!-- Navigation -->
+    <string name="navigation_pref_title">Navigation</string>
 
     <!-- Navigation bar force enable -->
-    <string name="navigation_bar_simulate_category">Simulate navigation bar</string>
-    <string name="navbar_force_enable_title">Force navigation bar</string>
+    <string name="navigation_bar_simulate_category">Navigation bar</string>
+    <string name="navbar_force_enable_title">Turn on navigation bar</string>
     <string name="navbar_force_enable_summary">May require a reboot</string>
     <string name="hardware_keys_disable_title">Disable hardware keys</string>
     <string name="hardware_keys_disable_summary">Blocks processing of hardware keys and disables them</string>
+    <string name="hardware_keys_category_title">Hardware keys</string>
 
     <!-- Per app controls for keyguard notifications -->
     <string name="app_notification_show_on_keyguard_title">Show on lockscreen</string>

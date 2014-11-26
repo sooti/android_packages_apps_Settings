@@ -29,7 +29,7 @@ import android.util.Log;
 import com.android.settings.R;
 import com.android.settings.SettingsPreferenceFragment;
 
-public class NavigationBarSettings extends SettingsPreferenceFragment
+public class NavigationSettings extends SettingsPreferenceFragment
     implements OnPreferenceChangeListener {
 
     private static final String CATEGORY_NAV_BAR_SIMULATE = "navigation_bar_simulate";
@@ -43,7 +43,7 @@ public class NavigationBarSettings extends SettingsPreferenceFragment
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        addPreferencesFromResource(R.xml.navigation_bar_settings);
+        addPreferencesFromResource(R.xml.fusion_navigation_settings);
 
         mNavigationBarHeight = (ListPreference) findPreference(KEY_NAVIGATION_BAR_HEIGHT);
         mNavigationBarHeight.setOnPreferenceChangeListener(this);
@@ -86,7 +86,7 @@ public class NavigationBarSettings extends SettingsPreferenceFragment
         }
 
         // Load the preferences from an XML resource
-        addPreferencesFromResource(R.xml.navigation_bar_settings);
+        addPreferencesFromResource(R.xml.fusion_navigation_settings);
         prefs = getPreferenceScreen();
 
         final ButtonBacklightBrightness backlight =
