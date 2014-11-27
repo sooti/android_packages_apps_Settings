@@ -48,6 +48,16 @@
             android:targetClass="com.cyanogenmod.settings.device.DeviceSettings" />
     </PreferenceScreen>
 
+    <Preference
+        android:id="@+id/kernel_tweaker"
+        android:title="@string/kernel_tweaker_title"
+        android:summary="@string/kernel_tweaker_summary_title">
+        <intent
+            android:action="android.intent.action.MAIN"
+            android:targetClass="com.ktoonsez.KTweaker.MainActivity"
+            android:targetPackage="com.ktoonsez.KTweaker" />
+    </Preference>
+
     <PreferenceScreen
         android:key="hfm_settings"
         android:title="@string/hfm_pref_screen_title"

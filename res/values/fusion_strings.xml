@@ -347,4 +347,8 @@
     <string name="backlight_summary_enabled">Enabled</string>
     <string name="auto_brightness_reset_button">Reset</string>
 
+    <!-- Kernel tweaker -->
+    <string name="kernel_tweaker_title">Kernel tweaker</string>
+    <string name="kernel_tweaker_summary_title">Change the kernel settings. Use at own risk!!</string>
+
 </resources>
