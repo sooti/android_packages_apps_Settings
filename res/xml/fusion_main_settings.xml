@@ -30,9 +30,16 @@
             android:targetPackage="com.vipercn.viper4android_v2" /> 
     </Preference>
 
+    <!-- Interface -->
+    <PreferenceScreen
+        android:id="@+id/fusion_interface_settings"
+        android:title="@string/fusion_interface_settings_title"
+        android:fragment="com.android.settings.fusion.InterfaceSettings"
+        android:icon="@drawable/ic_fusion_interface_teal" />
+
     <!-- Status bar -->
     <PreferenceScreen
-        android:id="@+id/statusbar_settings"
+        android:id="@+id/fusion_statusbar_settings"
         android:title="@string/statusbar_settings_title"
         android:fragment="com.android.settings.fusion.StatusBarSettings"
         android:icon="@drawable/ic_fusion_statusbar" />

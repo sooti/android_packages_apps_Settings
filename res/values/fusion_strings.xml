@@ -39,10 +39,13 @@
     <string name="statusbar_settings_title">Status bar</string>
     <string name="equalizer_settings_title">Equalizer</string>
 
+    <!-- Fusion Interface -->
+    <string name="fusion_interface_settings_title">Interface</string>
+
     <!-- Fusion Status bar -->
     <string name="status_bar_title">Status bar</string>
 
-    <!-- Fusion Status bar -->
+    <!-- Fusion Advanced -->
     <string name="fusion_advanced_settings_title">Advanced</string>
 
     <!-- Advanced, Device specific (DeviceParts) settings -->
@@ -474,5 +477,13 @@
     <string name="app_ops_categories_media">Media</string>
     <string name="app_ops_categories_device">Device</string>
     <string name="app_ops_categories_bootup">Bootup</string>
+
+    <!-- Recents panel settings -->
+    <string name="recents_panel_settings">Recents panel settings</string>
+    <string name="show_clear_all_recents_button_title">Clear all recents button</string>
+    <string name="show_clear_all_recents_button_summary">Show clear all button on recents panel</string>
+    <string name="recents_clear_all_location_title">Clear all recents location</string>
+    <string name="recents_clear_all_location_right">Top right</string>
+    <string name="recents_clear_all_location_left">Top left</string>
 
 </resources>
