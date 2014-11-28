@@ -17,31 +17,31 @@
 <PreferenceScreen
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:settings="http://schemas.android.com/apk/res/com.android.settings"
-    android:title="@string/fusion_settings_title" >
+    android:title="@string/fusion_advanced_settings_title" >
 
-    <!-- Equalizer -->
+    <PreferenceScreen
+        android:key="devicesettings_app"
+        android:title="@string/device_settings_title"
+        android:summary="@string/devicesettings_app_summary">
+        <intent
+            android:action="com.cyanogenmod.action.LAUNCH_DEVICE_SETTINGS"
+            android:targetPackage="com.cyanogenmod.settings.device"
+            android:targetClass="com.cyanogenmod.settings.device.DeviceSettings" />
+    </PreferenceScreen>
+
     <Preference
-        android:id="@+id/equalizer_settings"
-        android:title="@string/equalizer_settings_title"
-        android:icon="@drawable/ic_fusion_equalizer" >
+        android:id="@+id/kernel_tweaker"
+        android:title="@string/kernel_tweaker_title"
+        android:summary="@string/kernel_tweaker_summary_title">
         <intent
             android:action="android.intent.action.MAIN"
-            android:targetClass="com.vipercn.viper4android_v2.activity.ViPER4Android"
-            android:targetPackage="com.vipercn.viper4android_v2" /> 
+            android:targetClass="com.ktoonsez.KTweaker.MainActivity"
+            android:targetPackage="com.ktoonsez.KTweaker" />
     </Preference>
 
-    <!-- Status bar -->
     <PreferenceScreen
-        android:id="@+id/statusbar_settings"
-        android:title="@string/statusbar_settings_title"
-        android:fragment="com.android.settings.fusion.StatusBarSettings"
-        android:icon="@drawable/ic_fusion_statusbar" />
-
-    <!-- Advanced Settings -->
-    <PreferenceScreen
-        android:id="@+id/fusion_advanced_settings"
-        android:title="@string/fusion_advanced_settings_title"
-        android:fragment="com.android.settings.fusion.AdvancedSettings"
-        android:icon="@drawable/ic_fusion_advanced" />
+        android:key="hfm_settings"
+        android:title="@string/hfm_pref_screen_title"
+        android:fragment="com.android.settings.fusion.hfm.HfmSettings" />
 
 </PreferenceScreen>

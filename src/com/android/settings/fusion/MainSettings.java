@@ -16,46 +16,35 @@
 
 package com.android.settings.fusion;
 
-import android.content.Intent;
-import android.content.pm.PackageManager;
-import android.content.pm.ResolveInfo;
 import android.os.Bundle;
+import android.preference.CheckBoxPreference;
+import android.preference.ListPreference;
 import android.preference.Preference;
+import android.preference.Preference.OnPreferenceChangeListener;
+import android.preference.PreferenceCategory;
 import android.preference.PreferenceScreen;
+import android.provider.Settings;
+import android.provider.Settings.SettingNotFoundException;
 
 import com.android.settings.R;
 import com.android.settings.SettingsPreferenceFragment;
-
-import java.util.List;
+import com.android.settings.Utils;
 
 public class MainSettings extends SettingsPreferenceFragment {
-
-    private static final String PREF_DEVICESETTINGS_APP = "devicesettings_app";
-
-    private PreferenceScreen mDeviceSettingsApp;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
         addPreferencesFromResource(R.xml.fusion_main_settings);
-
-        mDeviceSettingsApp = (PreferenceScreen) findPreference(PREF_DEVICESETTINGS_APP);
-
-        if (!deviceSettingsAppExists()) {
-            getPreferenceScreen().removePreference(mDeviceSettingsApp);
-        }
     }
 
-    private boolean deviceSettingsAppExists() {
-        Intent intent = mDeviceSettingsApp.getIntent();
-        if (intent != null) {
-            PackageManager pm = getActivity().getPackageManager();
-            List<ResolveInfo> list = pm.queryIntentActivities(intent, PackageManager.GET_META_DATA);
-            int listSize = list.size();
-            return (listSize > 0) ? true : false;
-
-        }
+    public boolean onPreferenceChange(Preference preference, Object objValue) {
         return false;
+    }
+
+    public boolean onPreferenceTreeClick(PreferenceScreen preferenceScreen, Preference preference) {
+        boolean value;
+ 		return super.onPreferenceTreeClick(preferenceScreen, preference);
     }
 }

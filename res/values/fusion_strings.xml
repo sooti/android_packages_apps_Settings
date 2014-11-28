@@ -42,6 +42,9 @@
     <!-- Fusion Status bar -->
     <string name="status_bar_title">Status bar</string>
 
+    <!-- Fusion Status bar -->
+    <string name="fusion_advanced_settings_title">Advanced</string>
+
     <!-- Advanced, Device specific (DeviceParts) settings -->
     <string name="device_settings_title">Device</string>
 
