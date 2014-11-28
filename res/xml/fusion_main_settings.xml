@@ -42,6 +42,6 @@
         android:id="@+id/fusion_advanced_settings"
         android:title="@string/fusion_advanced_settings_title"
         android:fragment="com.android.settings.fusion.AdvancedSettings"
-        android:icon="@drawable/ic_fusion_advanced" />
+        android:icon="@drawable/ic_fusion_advanced_teal" />
 
 </PreferenceScreen>
