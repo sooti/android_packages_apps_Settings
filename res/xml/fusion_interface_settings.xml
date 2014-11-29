@@ -19,6 +19,12 @@
     xmlns:settings="http://schemas.android.com/apk/res/com.android.settings"
     android:title="@string/fusion_interface_settings_title" >
 
+        <PreferenceScreen
+            android:id="@+id/app_circle_sidebar"
+            android:title="@string/app_circle_bar_title"
+            android:summary="@string/app_circle_sidebar_summary_real"
+            android:fragment="com.android.settings.fusion.AppCircleSidebar" />
+
     <PreferenceCategory
         android:key="recents_panel"
         android:title="@string/recents_panel_settings" >
