@@ -501,4 +501,8 @@
     <string name="trigger_bottom_title">Trigger height</string>
     <string name="trigger_bottom_summary">Adjust the height of trigger area</string>
 
+    <!-- Statusbar show battery percent -->
+    <string name="status_bar_show_battery_percent_title">Battery percentage</string>
+    <string name="status_bar_show_battery_percent_summary">Show battery status percent</string>
+
 </resources>
