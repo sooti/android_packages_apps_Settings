@@ -59,8 +59,7 @@
             android:id="@+id/button_settings"
             android:title="@string/button_pref_title"
             android:fragment="com.android.settings.ButtonSettings"
-            android:dependency="hardware_keys_disable"
-            android:icon="@drawable/ic_settings_home" />
+            android:dependency="hardware_keys_disable" />
 
     </PreferenceCategory>
 
