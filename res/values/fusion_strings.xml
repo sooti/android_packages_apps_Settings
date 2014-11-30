@@ -48,6 +48,10 @@
     <!-- Fusion Advanced -->
     <string name="fusion_advanced_settings_title">Advanced</string>
 
+    <!-- Fusion Sound & Notification -->
+    <string name="sound_title">Sound</string>
+    <string name="general_sound_category_title">General</string>
+
     <!-- Advanced, Device specific (DeviceParts) settings -->
     <string name="device_settings_title">Device</string>
 
@@ -63,10 +67,6 @@
     <string name="display_rotation_90_title">90 degrees</string>
     <string name="display_rotation_180_title">180 degrees</string>
     <string name="display_rotation_270_title">270 degrees</string>
-
-    <!-- Sound settings -->
-    <string name="advanced_sound_title">Advanced options</string>
-    <string name="sound_title">Sound</string>
 
     <!-- Safe headset volume restore checkbox -->
     <string name="safe_headset_volume_title">Safe headset volume</string>

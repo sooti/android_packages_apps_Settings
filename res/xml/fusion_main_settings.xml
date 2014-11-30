@@ -33,6 +33,14 @@
         android:fragment="com.android.settings.fusion.StatusBarSettings"
         android:icon="@drawable/ic_fusion_statusbar" />
 
+    <!-- Sound -->
+    <PreferenceScreen
+        android:key="fusion_sound_settings"
+        android:title="@string/sound_title"
+        android:persistent="false"
+        android:fragment="com.android.settings.fusion.SoundSettings"
+        android:icon="@drawable/ic_settings_notifications" />
+
     <!-- Equalizer -->
     <Preference
         android:id="@+id/equalizer_settings"
