@@ -2243,8 +2243,11 @@
                 android:value="com.android.settings.fusion.MainSettings" />
         </activity>
 
-        <activity
-             android:name=".fusion.MainSettings" />
+        <activity android:name=".fusion.MainSettings" />
+
+        <activity android:name=".fusion.gestureanywhere.GestureAnywhereBuilderActivity" />
+
+        <activity android:name=".fusion.gestureanywhere.GestureAnywhereCreateGestureActivity" />
 
         <provider
             android:name=".search.SettingsSearchIndexablesProvider"

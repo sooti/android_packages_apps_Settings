@@ -16,15 +16,10 @@
 
 <resources>
 
-    <declare-styleable name="SeekBarPreference">
-        <attr name="min" format="integer" />
-        <attr name="minimum" format="integer" />
-        <attr name="unitsLeft" format="string" />
-        <attr name="unitsRight" format="string" />
-    </declare-styleable>
+    <!-- Gesture anywhere -->
+    <dimen name="ga_gesture_thumbnail_inset">8dip</dimen>
+    <dimen name="ga_gesture_thumbnail_size">64dip</dimen>
 
-    <declare-styleable name="SeekBarPreferenceCham">
-        <attr name="interval" format="integer" />
-    </declare-styleable>
+    <dimen name="shortcut_picker_left_padding">70dip</dimen>
 
 </resources>

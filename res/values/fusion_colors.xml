@@ -16,15 +16,7 @@
 
 <resources>
 
-    <declare-styleable name="SeekBarPreference">
-        <attr name="min" format="integer" />
-        <attr name="minimum" format="integer" />
-        <attr name="unitsLeft" format="string" />
-        <attr name="unitsRight" format="string" />
-    </declare-styleable>
-
-    <declare-styleable name="SeekBarPreferenceCham">
-        <attr name="interval" format="integer" />
-    </declare-styleable>
+    <!-- Gesture anywhere -->
+    <color name="ga_gesture_color">@android:color/black</color>
 
 </resources>
