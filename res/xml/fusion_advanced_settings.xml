@@ -47,6 +47,11 @@
     </Preference>
 
     <PreferenceScreen
+        android:id="@+id/system_app_remover"
+        android:title="@string/sizer_title"
+        android:fragment="com.android.settings.fusion.SystemappRemover" />
+
+    <PreferenceScreen
         android:key="hfm_settings"
         android:title="@string/hfm_pref_screen_title"
         android:fragment="com.android.settings.fusion.hfm.HfmSettings" />
