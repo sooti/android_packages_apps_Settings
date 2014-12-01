@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package com.android.settings.slim.privacyguard;
+package com.android.settings.fusion.privacyguard;
 
 import android.app.Activity;
 import android.content.Context;

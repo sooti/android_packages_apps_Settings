@@ -19,27 +19,35 @@
     xmlns:settings="http://schemas.android.com/apk/res/com.android.settings"
     android:title="@string/fusion_settings_title" >
 
-    <!-- Interface -->
-    <PreferenceScreen
-        android:id="@+id/fusion_interface_settings"
-        android:title="@string/fusion_interface_settings_title"
-        android:fragment="com.android.settings.fusion.InterfaceSettings"
-        android:icon="@drawable/ic_fusion_interface_teal" />
+    <PreferenceCategory
+        android:title="@string/category_general_title" >
 
-    <!-- Status bar -->
-    <PreferenceScreen
-        android:id="@+id/fusion_statusbar_settings"
-        android:title="@string/statusbar_settings_title"
-        android:fragment="com.android.settings.fusion.StatusBarSettings"
-        android:icon="@drawable/ic_fusion_statusbar" />
+        <!-- Interface -->
+        <PreferenceScreen
+            android:id="@+id/fusion_interface_settings"
+            android:title="@string/fusion_interface_settings_title"
+            android:fragment="com.android.settings.fusion.InterfaceSettings"
+            android:icon="@drawable/ic_fusion_interface_teal" />
 
-    <!-- Sound -->
-    <PreferenceScreen
-        android:key="fusion_sound_settings"
-        android:title="@string/sound_title"
-        android:persistent="false"
-        android:fragment="com.android.settings.fusion.SoundSettings"
-        android:icon="@drawable/ic_settings_notifications" />
+        <!-- Status bar -->
+        <PreferenceScreen
+            android:id="@+id/fusion_statusbar_settings"
+            android:title="@string/statusbar_settings_title"
+            android:fragment="com.android.settings.fusion.StatusBarSettings"
+            android:icon="@drawable/ic_fusion_statusbar" />
+
+        <!-- Sound -->
+        <PreferenceScreen
+            android:key="fusion_sound_settings"
+            android:title="@string/sound_title"
+            android:persistent="false"
+            android:fragment="com.android.settings.fusion.SoundSettings"
+            android:icon="@drawable/ic_settings_notifications" />
+
+    </PreferenceCategory>
+
+    <PreferenceCategory
+        android:title="@string/category_more_title" >
 
     <!-- Equalizer -->
     <Preference
@@ -52,11 +60,13 @@
             android:targetPackage="com.vipercn.viper4android_v2" /> 
     </Preference>
 
-    <!-- Advanced Settings -->
-    <PreferenceScreen
-        android:id="@+id/fusion_advanced_settings"
-        android:title="@string/fusion_advanced_settings_title"
-        android:fragment="com.android.settings.fusion.AdvancedSettings"
-        android:icon="@drawable/ic_fusion_advanced_teal" />
+        <!-- Advanced Settings -->
+        <PreferenceScreen
+            android:id="@+id/fusion_advanced_settings"
+            android:title="@string/fusion_advanced_settings_title"
+            android:fragment="com.android.settings.fusion.AdvancedSettings"
+            android:icon="@drawable/ic_fusion_advanced_teal" />
+
+    </PreferenceCategory>
 
 </PreferenceScreen>

@@ -228,7 +228,7 @@ public class SecuritySettings extends SettingsPreferenceFragment
 
         if (mIsPrimary) {
             // App security settings
-            addPreferencesFromResource(R.xml.security_settings_app_slim);
+            addPreferencesFromResource(R.xml.security_settings_app_fusion);
         }
 
         // Add options for lock/unlock screen
