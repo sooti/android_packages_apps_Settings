@@ -30,11 +30,15 @@ import com.android.settings.R;
 import com.android.settings.SettingsPreferenceFragment;
 import com.android.settings.Utils;
 
+import com.android.internal.util.fusion.DeviceUtils;
+
 public class StatusBarSettings extends SettingsPreferenceFragment implements
         OnPreferenceChangeListener {
 
     private static final String STATUS_BAR_SHOW_BATTERY_PERCENT = "status_bar_show_battery_percent";
+    private static final String KEY_STATUS_BAR_CLOCK = "clock_style_pref";
 
+    private PreferenceScreen mClockStyle;
     private SwitchPreference mStatusBarShowBatteryPercent;
 
     @Override
@@ -43,11 +47,16 @@ public class StatusBarSettings extends SettingsPreferenceFragment implements
 
         addPreferencesFromResource(R.xml.fusion_statusbar_settings);
 
+        PreferenceScreen prefSet = getPreferenceScreen();
+
         mStatusBarShowBatteryPercent = (SwitchPreference) findPreference(STATUS_BAR_SHOW_BATTERY_PERCENT);
         mStatusBarShowBatteryPercent.setOnPreferenceChangeListener(this);
         int statusBarShowBatteryPercent = Settings.System.getInt(getContentResolver(),
                 STATUS_BAR_SHOW_BATTERY_PERCENT, 0);
         mStatusBarShowBatteryPercent.setChecked(statusBarShowBatteryPercent != 0);
+
+        mClockStyle = (PreferenceScreen) prefSet.findPreference(KEY_STATUS_BAR_CLOCK);
+        updateClockStyleDescription();
     }
 
     public boolean onPreferenceChange(Preference preference, Object objValue) {
@@ -58,6 +67,24 @@ public class StatusBarSettings extends SettingsPreferenceFragment implements
             return true;
         }
         return false;
+    }
+
+    @Override
+    public void onResume() {
+        super.onResume();
+        updateClockStyleDescription();
+    }
+
+    private void updateClockStyleDescription() {
+        if (mClockStyle == null) {
+            return;
+        }
+        if (Settings.System.getInt(getContentResolver(),
+               Settings.System.STATUS_BAR_CLOCK, 1) == 1) {
+            mClockStyle.setSummary(getString(R.string.enabled));
+        } else {
+            mClockStyle.setSummary(getString(R.string.disabled));
+         }
     }
 
     public boolean onPreferenceTreeClick(PreferenceScreen preferenceScreen, Preference preference) {
