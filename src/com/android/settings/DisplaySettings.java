@@ -88,6 +88,7 @@ public class DisplaySettings extends SettingsPreferenceFragment implements
     private static final String KEY_WAKEUP_CATEGORY = "category_wakeup_options";
     private static final String KEY_VOLUME_WAKE = "pref_volume_wake";
     private static final String KEY_TAP_TO_WAKE = "double_tap_wake_gesture";
+    private static final String KEY_PROXIMITY_WAKE = "proximity_on_wake";
     private static final String DISABLE_IMMERSIVE_MESSAGE = "disable_immersive_message";
     private static final String KEY_TOAST_ANIMATION = "toast_animation";
     private static final String KEY_DISPLAY_DENSITY = "display_density";
@@ -234,6 +235,13 @@ public class DisplaySettings extends SettingsPreferenceFragment implements
         if (!isTapToWakeSupported()) {
             advancedPrefs.removePreference(mTapToWake);
             mTapToWake = null;
+        }
+
+        boolean proximityCheckOnWait = getResources().getBoolean(
+                com.android.internal.R.bool.config_proximityCheckOnWake);
+        if (!proximityCheckOnWait) {
+            advancedPrefs.removePreference(findPreference(KEY_PROXIMITY_WAKE));
+            Settings.System.putInt(getContentResolver(), Settings.System.PROXIMITY_ON_WAKE, 1);
         }
 
         mDisplayDensity = (EditTextPreference) findPreference(KEY_DISPLAY_DENSITY);
