@@ -42,7 +42,7 @@
             android:title="@string/sound_title"
             android:persistent="false"
             android:fragment="com.android.settings.fusion.SoundSettings"
-            android:icon="@drawable/ic_settings_fusion_sound" />
+            android:icon="@drawable/ic_settings_fusion_sound_teal" />
 
     </PreferenceCategory>
 
