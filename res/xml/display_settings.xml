@@ -113,8 +113,9 @@
                 settings:keywords="@string/keywords_display_cast_screen"
                 android:fragment="com.android.settings.wfd.WifiDisplaySettings" />
 
+        </PreferenceCategory>
 
-        <PreferenceScreen
+        <PreferenceCategory
                 android:key="advanced_display_prefs"
                 android:title="@string/advanced_settings">
 
@@ -133,8 +134,6 @@
                     android:title="@string/double_tap_to_sleep_title"
                     android:summary="@string/double_tap_to_sleep_summary"
                     android:defaultValue="true" />
-        </PreferenceScreen>
-
         </PreferenceCategory>
 
          <PreferenceCategory
