@@ -123,7 +123,7 @@ public class AppOpsSummary extends Fragment {
         mContentContainer = container;
         mRootView = rootView;
 
-        mPageNames = getResources().getTextArray(R.array.app_ops_categories_slim);
+        mPageNames = getResources().getTextArray(R.array.app_ops_categories_fusion);
 
         mViewPager = (ViewPager) rootView.findViewById(R.id.pager);
         mAdapter = new MyPagerAdapter(getChildFragmentManager());
