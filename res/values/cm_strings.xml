@@ -133,7 +133,9 @@
     <string name="toggleWimax">WiMAX</string>
     <string name="toggleNfc">NFC</string>
 
+    <!-- Hardware keys -->
     <string name="button_pref_title">Buttons</string>
+    <string name="hardware_keys_power_key_title">Power button</string>
     <string name="hardware_keys_home_key_title">Home button</string>
     <string name="hardware_keys_menu_key_title">Menu button</string>
     <string name="hardware_keys_short_press_title">Short press action</string>
@@ -149,7 +151,6 @@
     <string name="hardware_keys_action_sleep">Turn screen off</string>
 
     <string name="show_battery_percent_title">Show battery percentage</string>
-    <string name="app_security_title">App security</string>
 
     <!-- Blacklist preferences -->
     <string name="blacklist_title">Blacklist</string>
