@@ -36,21 +36,20 @@
 
     <!-- Fusion General -->
     <string name="fusion_settings_title">Fusion</string>
-    <string name="display_category_fusion_options_title">Fusion Options</string>
-    <string name="category_general_title">General Options</string>
-    <string name="category_more_title">More Options</string>
+    <string name="display_category_fusion_options_title">Fusion options</string>
+    <string name="category_general_title">General options</string>
+    <string name="category_more_title">More options</string>
     <string name="statusbar_settings_title">Status bar</string>
     <string name="equalizer_settings_title">Equalizer</string>
-
     <!-- Fusion Interface -->
     <string name="fusion_interface_settings_title">Interface</string>
-
     <!-- Fusion Status bar -->
     <string name="status_bar_title">Status bar</string>
-
     <!-- Fusion Advanced -->
     <string name="fusion_advanced_settings_title">Advanced</string>
-
+    <!-- Fusion Privacy -->
+    <string name="fusion_privacy_settings_title">Privacy</string>
+    <string name="phone_security_title">Phone security</string>
     <!-- Fusion Sound & Notification -->
     <string name="sound_title">Sound</string>
     <string name="general_sound_category_title">General</string>
