@@ -204,18 +204,6 @@
     <string name="network_traffic_autohide_summary">Hide the traffic monitor when there is no activity</string>
     <string name="network_traffic_autohide_threshold">Inactivity threshold</string>
 
-    <!-- Navigation Bar Height -->
-    <string name="navigation_bar_height">Navigation bar height</string>
-    <string name="navigation_bar_height_48">48dp (default)</string>
-    <string name="navigation_bar_height_44">44dp</string>
-    <string name="navigation_bar_height_40">40dp</string>
-    <string name="navigation_bar_height_36">36dp</string>
-    <string name="navigation_bar_height_32">32dp</string>
-    <string name="navigation_bar_height_28">28dp</string>
-    <string name="navigation_bar_height_24">24dp</string>
-    <string name="navigation_bar_height_20">20dp</string>
-    <string name="navigation_bar_height_0">0dp (hide)</string>
-
     <!-- Partition Info -->
     <string name="partition_info_title">Partition info</string>
     <string name="partition_info_system">/system</string>
@@ -341,10 +329,27 @@
     <!-- Navigation -->
     <string name="navigation_pref_title">Navigation</string>
 
-    <!-- Navigation bar force enable -->
-    <string name="navigation_bar_simulate_category">Navigation bar</string>
-    <string name="navbar_force_enable_title">Turn on navigation bar</string>
-    <string name="navbar_force_enable_summary">May require a reboot</string>
+    <!-- Navigation bar -->
+    <string name="navbar_enable_bar_title">Enable navigation bar</string>
+    <string name="navbar_enable_bar_summary">Enable to show the navigation bar</string>
+    <string name="navbar_settings_category">Navigation bar</string>
+    <string name="navbar_style_dimen_title">Nav bar dimensions</string>
+    <string name="navbar_dimensions_reset_message">Reset all dimensions entries to default?</string>
+    <string name="navigation_bar_height_title">Navigation bar height</string>
+    <string name="navigation_bar_height_summary">Navigation bar height while in portrait</string>
+    <string name="navigation_bar_width_title">Navigation bar width</string>
+    <string name="navigation_bar_width_summary">Navigation bar height if the bar is along a side</string>
+    <string name="navigation_bar_size_42_dp_default">42 dp (default)</string>
+    <string name="navigation_bar_size_36_dp">36 dp</string>
+    <string name="navigation_bar_size_30_dp">30 dp</string>
+    <string name="navigation_bar_size_24_dp">24 dp</string>
+    <string name="navigation_bar_size_48_dp_default">48 dp (default)</string>
+    <string name="navigation_bar_size_44_dp">44 dp</string>
+    <string name="navigation_bar_size_40_dp">40 dp</string>
+    <string name="navigation_bar_size_42_dp">42 dp</string>
+    <string name="navigation_bar_size_0_dp">0 dp (off)</string>
+
+    <!-- Disable hardware keys -->
     <string name="hardware_keys_disable_title">Disable hardware keys</string>
     <string name="hardware_keys_disable_summary">Blocks processing of hardware keys and disables them</string>
     <string name="hardware_keys_category_title">Hardware keys</string>

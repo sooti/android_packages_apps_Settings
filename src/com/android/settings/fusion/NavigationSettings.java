@@ -29,51 +29,56 @@ import android.util.Log;
 import com.android.settings.R;
 import com.android.settings.SettingsPreferenceFragment;
 
+import com.android.internal.util.fusion.FusionUtils;
+
 public class NavigationSettings extends SettingsPreferenceFragment
     implements OnPreferenceChangeListener {
 
-    private static final String CATEGORY_NAV_BAR_SIMULATE = "navigation_bar_simulate";
-    private static final String KEY_NAVIGATION_BAR_HEIGHT = "navigation_bar_height";
+    private static final String KEY_ENABLE_NAVIGATION_BAR = "enable_nav_bar";
     private static final String KEY_BUTTON_BACKLIGHT = "button_backlight";
 
     private boolean mCheckPreferences;
 
-    private ListPreference mNavigationBarHeight;
+    private SwitchPreference mEnableNavigationBar;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         addPreferencesFromResource(R.xml.fusion_navigation_settings);
 
-        mNavigationBarHeight = (ListPreference) findPreference(KEY_NAVIGATION_BAR_HEIGHT);
-        mNavigationBarHeight.setOnPreferenceChangeListener(this);
-        int statusNavigationBarHeight = Settings.System.getInt(getActivity().getApplicationContext()
-                .getContentResolver(),
-                Settings.System.NAVIGATION_BAR_HEIGHT, 48);
-        mNavigationBarHeight.setValue(String.valueOf(statusNavigationBarHeight));
-        mNavigationBarHeight.setSummary(mNavigationBarHeight.getEntry());
+        final PreferenceScreen prefScreen = getPreferenceScreen();
 
-        final boolean hasRealNavigationBar = getResources()
-                .getBoolean(com.android.internal.R.bool.config_showNavigationBar);
-        if (hasRealNavigationBar) { // only disable on devices with REAL navigation bars
-            final Preference pref = findPreference(CATEGORY_NAV_BAR_SIMULATE);
-            if (pref != null) {
-                getPreferenceScreen().removePreference(pref);
-            }
-        // Attach final settings screen.
-        reloadSettings();
-        }
+        // Enable/disable navigation bar
+        boolean hasNavBarByDefault = getResources().getBoolean(
+                com.android.internal.R.bool.config_showNavigationBar);
+        boolean enableNavigationBar = Settings.System.getInt(getContentResolver(),
+                Settings.System.NAVIGATION_BAR_SHOW, hasNavBarByDefault ? 1 : 0) == 1;
+        mEnableNavigationBar = (SwitchPreference) prefScreen.findPreference(KEY_ENABLE_NAVIGATION_BAR);
+        mEnableNavigationBar.setChecked(enableNavigationBar);
+        mEnableNavigationBar.setOnPreferenceChangeListener(this);
+
+        updateNavBarSettings();
+    }
+
+    private void updateNavBarSettings() {
+        boolean enableNavigationBar = Settings.System.getInt(getContentResolver(),
+                Settings.System.NAVIGATION_BAR_SHOW,
+                FusionUtils.isNavBarDefault(getActivity()) ? 1 : 0) == 1;
+        mEnableNavigationBar.setChecked(enableNavigationBar);
+
+        updateNavbarPreferences(enableNavigationBar);
+    }
+
+    private void updateNavbarPreferences(boolean show) {
     }
 
     @Override
     public boolean onPreferenceChange(Preference preference, Object objValue) {
-        final String key = preference.getKey();
-        if (preference == mNavigationBarHeight) {
-            int statusNavigationBarHeight = Integer.valueOf((String) objValue);
-            int index = mNavigationBarHeight.findIndexOfValue((String) objValue);
-            Settings.System.putInt(getActivity().getApplicationContext().getContentResolver(),
-                    Settings.System.NAVIGATION_BAR_HEIGHT, statusNavigationBarHeight);
-            mNavigationBarHeight.setSummary(mNavigationBarHeight.getEntries()[index]);
+        if (preference == mEnableNavigationBar) {
+            mEnableNavigationBar.setEnabled(true);
+            Settings.System.putInt(getActivity().getContentResolver(),
+                    Settings.System.NAVIGATION_BAR_SHOW,
+                        ((Boolean) objValue) ? 1 : 0);
         }
         return true;
     }
