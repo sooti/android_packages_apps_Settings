@@ -16,9 +16,12 @@
 
 package com.android.settings.fusion;
 
+import android.content.ContentResolver;
 import android.content.pm.PackageManager;
 import android.content.res.Resources;
+import android.database.ContentObserver;
 import android.os.Bundle;
+import android.os.Handler;
 import android.preference.ListPreference;
 import android.preference.Preference;
 import android.preference.Preference.OnPreferenceChangeListener;
@@ -27,6 +30,7 @@ import android.preference.PreferenceScreen;
 import android.preference.SwitchPreference;
 import android.provider.Settings;
 import android.provider.Settings.SettingNotFoundException;
+import android.util.Log;
 
 import com.android.settings.R;
 import com.android.settings.SettingsPreferenceFragment;
@@ -36,6 +40,8 @@ import com.android.internal.util.fusion.DeviceUtils;
 
 public class StatusBarSettings extends SettingsPreferenceFragment implements
         OnPreferenceChangeListener {
+
+    private static final String TAG = "StatusBarSettings";
 
     private static final String STATUS_BAR_SHOW_BATTERY_PERCENT = "status_bar_show_battery_percent";
     private static final String KEY_STATUS_BAR_CLOCK = "clock_style_pref";
@@ -88,7 +94,7 @@ public class StatusBarSettings extends SettingsPreferenceFragment implements
         } else if (preference == mTicker) {
             Settings.System.putInt(getContentResolver(),
                     Settings.System.STATUS_BAR_TICKER_ENABLED,
-                    (Boolean) newValue ? 1 : 0);
+                    (Boolean) objValue ? 1 : 0);
             return true;
         }
         return false;
