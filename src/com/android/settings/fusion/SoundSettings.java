@@ -54,6 +54,7 @@ public class SoundSettings extends SettingsPreferenceFragment implements
     private static final String KEY_POWER_NOTIFICATIONS = "power_notifications";
     private static final String KEY_POWER_NOTIFICATIONS_VIBRATE = "power_notifications_vibrate";
     private static final String KEY_POWER_NOTIFICATIONS_RINGTONE = "power_notifications_ringtone";
+    private static final String KEY_VOLBTN_MUSIC_CTRL = "volbtn_music_controls";
 
     // Request code for power notification ringtone picker
     private static final int REQUEST_CODE_POWER_NOTIFICATIONS_RINGTONE = 1;
@@ -68,6 +69,7 @@ public class SoundSettings extends SettingsPreferenceFragment implements
     private SwitchPreference mPowerSounds;
     private SwitchPreference mPowerSoundsVibrate;
     private Preference mPowerSoundsRingtone;
+    private SwitchPreference mVolBtnMusicCtrl;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -104,6 +106,11 @@ public class SoundSettings extends SettingsPreferenceFragment implements
         mPowerSounds.setOnPreferenceChangeListener(this);
 
         mPowerSoundsVibrate = (SwitchPreference) findPreference(KEY_POWER_NOTIFICATIONS_VIBRATE);
+
+        mVolBtnMusicCtrl = (SwitchPreference) findPreference(KEY_VOLBTN_MUSIC_CTRL);
+        mVolBtnMusicCtrl.setChecked(Settings.System.getInt(getContentResolver(),
+                Settings.System.VOLUME_MUSIC_CONTROLS, 1) != 0);
+        mVolBtnMusicCtrl.setOnPreferenceChangeListener(this);
 
         Vibrator vibrator = (Vibrator) getSystemService(Context.VIBRATOR_SERVICE);
         if (vibrator == null || !vibrator.hasVibrator()) {
@@ -175,6 +182,11 @@ public class SoundSettings extends SettingsPreferenceFragment implements
             } else {
                 showDialogInner(DLG_CAMERA_SOUND);
             }
+        }
+        if (KEY_VOLBTN_MUSIC_CTRL.equals(key)) {
+            Settings.System.putInt(getContentResolver(),
+                    Settings.System.VOLUME_MUSIC_CONTROLS,
+                    (Boolean) objValue ? 1 : 0);
         }
         if (KEY_POWER_NOTIFICATIONS.equals(key)) {
             Settings.Global.putInt(getContentResolver(),
