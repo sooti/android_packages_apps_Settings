@@ -91,6 +91,8 @@ public class SecuritySettings extends SettingsPreferenceFragment
     private static final int CONFIRM_EXISTING_FOR_BIOMETRIC_WEAK_IMPROVE_REQUEST = 124;
     private static final int CONFIRM_EXISTING_FOR_BIOMETRIC_WEAK_LIVELINESS_OFF = 125;
     private static final int CHANGE_TRUST_AGENT_SETTINGS = 126;
+    private static final String LOCKSCREEN_QUICK_UNLOCK_CONTROL = "quick_unlock_control";
+    private static final String LOCK_NUMPAD_RANDOM = "lock_numpad_random";
 
     // Misc Settings
     private static final String KEY_SIM_LOCK = "sim_lock";
@@ -111,7 +113,6 @@ public class SecuritySettings extends SettingsPreferenceFragment
     private static final String DM_AUTOBOOT_SETTING = "dm_selfregist_autoboot";
     private static final int DM_AUTOBOOT_SETTING_ENABLE = 1;
     private static final int DM_AUTOBOOT_SETTING_DISABLE = 0;
-    private static final String LOCK_NUMPAD_RANDOM = "lock_numpad_random";
 
     // These switch preferences need special handling since they're not all stored in Settings.
     private static final String SWITCH_PREFERENCE_KEYS[] = { KEY_LOCK_AFTER_TIMEOUT,
@@ -140,9 +141,10 @@ public class SecuritySettings extends SettingsPreferenceFragment
     private DialogInterface mWarnInstallApps;
     private SwitchPreference mPowerButtonInstantlyLocks;
     private ListPreference mAdvancedReboot;
-    private ListPreference mLockNumpadRandom;
 
     private ListPreference mSmsSecurityCheck;
+    private SwitchPreference mQuickUnlockScreen;
+    private ListPreference mLockNumpadRandom;
 
     private boolean mIsPrimary;
 
@@ -308,6 +310,14 @@ public class SecuritySettings extends SettingsPreferenceFragment
             if (securityCategory != null && mVisiblePattern != null) {
                 securityCategory.removePreference(root.findPreference(KEY_VISIBLE_PATTERN));
             }
+        }
+
+        // Quick Unlock Screen Control
+        mQuickUnlockScreen = (SwitchPreference) root
+                .findPreference(LOCKSCREEN_QUICK_UNLOCK_CONTROL);
+        if (mQuickUnlockScreen != null) {
+            mQuickUnlockScreen.setChecked(Settings.Secure.getInt(getContentResolver(),
+                    Settings.Secure.LOCKSCREEN_QUICK_UNLOCK_CONTROL, 1) == 1);
         }
 
         // Lock Numpad Random
@@ -755,6 +765,10 @@ public class SecuritySettings extends SettingsPreferenceFragment
             Settings.Secure.putInt(getContentResolver(), Settings.Global.SMS_OUTGOING_CHECK_MAX_COUNT,
                     smsSecurityCheck);
             updateSmsSecuritySummary(smsSecurityCheck);
+        } else if (preference == mQuickUnlockScreen) {
+            Settings.Secure.putInt(getActivity().getApplicationContext().getContentResolver(),
+                    Settings.Secure.LOCKSCREEN_QUICK_UNLOCK_CONTROL,
+                    (Boolean) value ? 1 : 0);
         } else if (preference == mLockNumpadRandom) {
             Settings.Secure.putInt(getContentResolver(),
                     Settings.Secure.LOCK_NUMPAD_RANDOM,
