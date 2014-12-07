@@ -655,4 +655,8 @@
     <string name="status_bar_ticker_title">Notification Ticker</string>
     <string name="status_bar_ticker_summary">Notification text animation in the statusbar</string>
 
+    <!-- Show weather toggle for status bar -->
+    <string name="status_bar_show_weather_title">Show weather</string>
+    <string name="status_bar_show_weather_summary">Show the weather in the status bar header</string>
+
 </resources>
