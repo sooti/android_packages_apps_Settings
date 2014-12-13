@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package com.android.settings.slim.dslv;
+package com.android.settings.fusion.dslv;
 
 import android.app.Activity;
 import android.app.AlertDialog;
@@ -53,18 +53,18 @@ import android.widget.TextView;
 import android.widget.ListView;
 import android.widget.Toast;
 
-import com.android.internal.util.crdroid.ActionConfig;
-import com.android.internal.util.crdroid.ActionConstants;
-import com.android.internal.util.crdroid.ActionHelper;
-import com.android.internal.util.crdroid.ImageHelper;
-import com.android.internal.util.crdroid.DeviceUtils;
-import com.android.internal.util.crdroid.DeviceUtils.FilteredDeviceFeaturesArray;
+import com.android.internal.util.fusion.ActionConfig;
+import com.android.internal.util.fusion.ActionConstants;
+import com.android.internal.util.fusion.ActionHelper;
+import com.android.internal.util.fusion.ImageHelper;
+import com.android.internal.util.fusion.DeviceUtils;
+import com.android.internal.util.fusion.DeviceUtils.FilteredDeviceFeaturesArray;
 
 import com.android.settings.SettingsPreferenceFragment;
 import com.android.settings.R;
-import com.android.settings.slim.dslv.DragSortListView;
-import com.android.settings.slim.dslv.DragSortController;
-import com.android.settings.slim.util.ShortcutPickerHelper;
+import com.android.settings.fusion.dslv.DragSortListView;
+import com.android.settings.fusion.dslv.DragSortController;
+import com.android.settings.fusion.util.ShortcutPickerHelper;
 
 import java.io.File;
 import java.io.FileOutputStream;
