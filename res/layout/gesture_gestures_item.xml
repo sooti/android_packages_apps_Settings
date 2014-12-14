@@ -14,17 +14,18 @@
      limitations under the License.
 -->
 
-<resources>
+<TextView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@android:id/text1"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
 
-    <!-- Gesture anywhere -->
-    <dimen name="ga_gesture_thumbnail_inset">8dip</dimen>
-    <dimen name="ga_gesture_thumbnail_size">64dip</dimen>
+    android:gravity="center_vertical"
+    android:minHeight="?android:attr/listPreferredItemHeight"
 
-    <!-- Gesture panel -->
-    <dimen name="gesture_thumbnail_inset">8dip</dimen>
-    <dimen name="gesture_thumbnail_size">64dip</dimen>
+    android:drawablePadding="12dip"
+    android:paddingLeft="6dip"
+    android:paddingRight="6dip"
 
-    <!-- Shortcut picker -->
-    <dimen name="shortcut_picker_left_padding">70dip</dimen>
-
-</resources>
+    android:ellipsize="marquee"
+    android:singleLine="true"
+    android:textAppearance="?android:attr/textAppearanceLarge" />
