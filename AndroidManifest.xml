@@ -2209,6 +2209,8 @@
 
         <service android:name="com.android.settings.fusion.hfm.CheckHosts" />
 
+        <activity android:name=".fusion.WakeLockBlocker" />
+
         <provider
             android:name="android.support.v4.content.FileProvider"
             android:authorities="com.android.settings.files"

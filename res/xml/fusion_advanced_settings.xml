@@ -56,4 +56,9 @@
         android:title="@string/hfm_pref_screen_title"
         android:fragment="com.android.settings.fusion.hfm.HfmSettings" />
 
+    <PreferenceScreen
+        android:id="@+id/wakelock_blocker"
+        android:title="@string/wakelock_blocker"
+        android:fragment="com.android.settings.fusion.WakeLockBlocker" />
+
 </PreferenceScreen>
