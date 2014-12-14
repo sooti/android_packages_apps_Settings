@@ -1896,20 +1896,6 @@
                        android:resource="@id/security_settings" />
         </activity-alias>
 
-        <!-- Fusion activities start -->
-
-        <activity android:name=".fusion.gesturepanel.CreateGestureActivity" />
-        <activity android:name=".fusion.gesturepanel.GestureBuilderActivity"
-                android:launchMode="singleTop"
-                android:excludeFromRecents="true" 
-                android:label="@string/gesture_panel_title" >
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-                <category android:name="android.intent.category.SHORTCUT" />
-            </intent-filter>
-        </activity>
-
-        <!-- Fusion activities End -->
 
         <!-- Pseudo-activity used to provide an intent-filter entry point to encryption settings -->
         <activity android:name="Settings$CryptKeeperSettingsActivity"
@@ -1917,7 +1903,7 @@
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
                 <action android:name="android.app.action.START_ENCRYPTION" />
-                <category android:name="android.intent.category.DEFAULT" />
+                <category android:name="android.intent.category.DEFAULT" /> />
             </intent-filter>
             <meta-data android:name="com.android.settings.FRAGMENT_CLASS"
                 android:value="com.android.settings.CryptKeeperSettings" />
