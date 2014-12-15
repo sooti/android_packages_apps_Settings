@@ -29,6 +29,13 @@
             android:fragment="com.android.settings.fusion.InterfaceSettings"
             android:icon="@drawable/ic_fusion_interface_teal" />
 
+        <!-- Animations -->
+        <PreferenceScreen
+            android:id="@+id/animations_settings"
+            android:title="@string/fusion_animations_settings_title"
+            android:fragment="com.android.settings.fusion.AnimationsSettings"
+            android:icon="@drawable/ic_fusion_animations_teal" />
+
         <!-- Status bar -->
         <PreferenceScreen
             android:id="@+id/fusion_statusbar_settings"
