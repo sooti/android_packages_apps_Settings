@@ -70,7 +70,6 @@ import com.android.settings.hardware.DisplayGamma;
 import org.cyanogenmod.hardware.AdaptiveBacklight;
 import org.cyanogenmod.hardware.ColorEnhancement;
 import org.cyanogenmod.hardware.SunlightEnhancement;
-import org.cyanogenmod.hardware.TapToWake;
 
 public class DisplaySettings extends SettingsPreferenceFragment implements
         Preference.OnPreferenceChangeListener, OnPreferenceClickListener, Indexable {
@@ -95,7 +94,6 @@ public class DisplaySettings extends SettingsPreferenceFragment implements
     private static final String KEY_WAKEUP_WHEN_PLUGGED_UNPLUGGED = "wakeup_when_plugged_unplugged";
     private static final String KEY_WAKEUP_CATEGORY = "category_wakeup_options";
     private static final String KEY_VOLUME_WAKE = "pref_volume_wake";
-    private static final String KEY_TAP_TO_WAKE = "double_tap_wake_gesture";
     private static final String KEY_PROXIMITY_WAKE = "proximity_on_wake";
     private static final String DISABLE_IMMERSIVE_MESSAGE = "disable_immersive_message";
     private static final String KEY_DISPLAY_DENSITY = "display_density";
@@ -126,7 +124,6 @@ public class DisplaySettings extends SettingsPreferenceFragment implements
     private SwitchPreference mDozePreference;
     private SwitchPreference mAutoBrightnessPreference;
     private SwitchPreference mVolumeWake;
-    private SwitchPreference mTapToWake;
     private SwitchPreference mDisableIM;
     private EditTextPreference mDisplayDensity;
 
@@ -259,12 +256,6 @@ public class DisplaySettings extends SettingsPreferenceFragment implements
 
         if (counter == 2) {
             prefSet.removePreference(mWakeUpOptions);
-        }
-
-        mTapToWake = (SwitchPreference) findPreference(KEY_TAP_TO_WAKE);
-        if (!isTapToWakeSupported()) {
-            advancedPrefs.removePreference(mTapToWake);
-            mTapToWake = null;
         }
 
         boolean proximityCheckOnWait = getResources().getBoolean(
@@ -433,10 +424,6 @@ public class DisplaySettings extends SettingsPreferenceFragment implements
             mColorEnhancement.setChecked(ColorEnhancement.isEnabled());
         }
 
-        if (mTapToWake != null) {
-            mTapToWake.setChecked(TapToWake.isEnabled());
-        }
-
         updateState();
         getContentResolver().registerContentObserver(
                 Settings.System.getUriFor(Settings.System.ACCELEROMETER_ROTATION), true,
@@ -497,15 +484,6 @@ public class DisplaySettings extends SettingsPreferenceFragment implements
         }
     }
 
-    private static boolean isTapToWakeSupported() {
-        try {
-            return TapToWake.isSupported();
-        } catch (NoClassDefFoundError e) {
-            // Hardware abstraction framework not installed
-            return false;
-        }
-    }
-
     /**
      * Reads the current font size and sets the value in the summary text
      */
@@ -538,8 +516,6 @@ public class DisplaySettings extends SettingsPreferenceFragment implements
             Settings.System.putInt(getActivity().getContentResolver(),
                     Settings.System.DISABLE_IMMERSIVE_MESSAGE, checked ? 1:0);
             return true;
-        } else if (preference == mTapToWake) {
-            return TapToWake.setEnabled(mTapToWake.isChecked());
         } else if (preference == mAdaptiveBacklight) {
             if (mSunlightEnhancement != null &&
                     SunlightEnhancement.isAdaptiveBacklightRequired()) {
@@ -642,16 +618,6 @@ public class DisplaySettings extends SettingsPreferenceFragment implements
      */
     public static void restore(Context ctx) {
         final SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(ctx);
-        if (isTapToWakeSupported()) {
-            final boolean enabled = prefs.getBoolean(KEY_TAP_TO_WAKE,
-                TapToWake.isEnabled());
-            if (!TapToWake.setEnabled(enabled)) {
-                Log.e(TAG, "Failed to restore tap-to-wake settings.");
-            } else {
-                Log.d(TAG, "Tap-to-wake settings restored.");
-            }
-        }
-
         if (isAdaptiveBacklightSupported()) {
             final boolean enabled = prefs.getBoolean(KEY_ADAPTIVE_BACKLIGHT,
                     AdaptiveBacklight.isEnabled());

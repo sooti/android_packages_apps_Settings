@@ -45,8 +45,11 @@
     <string name="equalizer_settings_title">Equalizer</string>
     <!-- Fusion Interface -->
     <string name="fusion_interface_settings_title">Interface</string>
-    <!-- Animations -->
+    <!-- Fusion Animations -->
     <string name="fusion_animations_settings_title">Animations</string>
+    <!-- Fusion Gestures -->
+    <string name="gesture_title">Gestures</string>
+    <string name="advanced_gesture_title">Advanced</string>
     <!-- Fusion Status bar -->
     <string name="status_bar_title">Status bar</string>
     <!-- Fusion Advanced -->

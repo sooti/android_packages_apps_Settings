@@ -36,6 +36,13 @@
             android:fragment="com.android.settings.fusion.AnimationsSettings"
             android:icon="@drawable/ic_fusion_animations_teal" />
 
+        <!-- Gestures -->
+        <PreferenceScreen
+            android:id="@+id/gesture_settings"
+            android:title="@string/gesture_title"
+            android:fragment="com.android.settings.fusion.GestureSettings"
+            android:icon="@drawable/ic_settings_gestures" />
+
         <!-- Status bar -->
         <PreferenceScreen
             android:id="@+id/fusion_statusbar_settings"
