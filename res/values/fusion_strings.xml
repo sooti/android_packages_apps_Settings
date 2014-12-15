@@ -952,4 +952,7 @@
     <string name="listview_anticipate_overshoot_interpolator">Anticipate and overshoot</string>
     <string name="listview_bounce_interpolator">Bounce</string>
 
+    <!-- Disable volume adjust sound -->
+    <string name="volume_adjust_sound_title">Volume adjust sound</string>
+
 </resources>
