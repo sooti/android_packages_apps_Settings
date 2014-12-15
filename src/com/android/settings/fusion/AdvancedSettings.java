@@ -20,6 +20,7 @@ import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.content.pm.ResolveInfo;
 import android.os.Bundle;
+import android.os.SystemProperties;
 import android.provider.Settings;
 import android.preference.ListPreference;
 import android.preference.Preference;
@@ -36,15 +37,26 @@ public class AdvancedSettings extends SettingsPreferenceFragment
 
     private static final String PREF_DEVICESETTINGS_APP = "devicesettings_app";
     private static final String PREF_MEDIA_SCANNER_ON_BOOT = "media_scanner_on_boot";
+    private static final String SCROLLINGCACHE_PREF = "pref_scrollingcache";
+
+    private static final String SCROLLINGCACHE_PERSIST_PROP = "persist.sys.scrollingcache";
+
+    private static final String SCROLLINGCACHE_DEFAULT = "1";
 
     private PreferenceScreen mDeviceSettingsApp;
     private ListPreference mMsob;
+    private ListPreference mScrollingCachePref;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
         addPreferencesFromResource(R.xml.fusion_advanced_settings);
+
+        mScrollingCachePref = (ListPreference) findPreference(SCROLLINGCACHE_PREF);
+        mScrollingCachePref.setValue(SystemProperties.get(SCROLLINGCACHE_PERSIST_PROP,
+                SystemProperties.get(SCROLLINGCACHE_PERSIST_PROP, SCROLLINGCACHE_DEFAULT)));
+        mScrollingCachePref.setOnPreferenceChangeListener(this);
 
         mMsob = (ListPreference) findPreference(PREF_MEDIA_SCANNER_ON_BOOT);
         mMsob.setValue(String.valueOf(Settings.System.getInt(getActivity().getContentResolver(),
@@ -81,6 +93,11 @@ public class AdvancedSettings extends SettingsPreferenceFragment
 
             mMsob.setValue(String.valueOf(value));
             mMsob.setSummary(mMsob.getEntry());
+            return true;
+        } else if (preference == mScrollingCachePref) {
+            if (newValue != null) {
+                SystemProperties.set(SCROLLINGCACHE_PERSIST_PROP, (String) newValue);
+            }
             return true;
         }
         return false;
