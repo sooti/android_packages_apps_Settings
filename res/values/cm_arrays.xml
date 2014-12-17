@@ -229,4 +229,26 @@ limitations under the License.
          per-device overlay. Required to build on non-hardware tunable devices -->
     <string-array name="gamma_descriptors" translatable="false">
     </string-array>
+
+    <!-- Wifi connection notifications -->
+    <string-array name="notify_changed_networks_entries" translatable="false">
+        <item>@string/notify_changed_networks_default</item>
+        <item>@string/notify_changed_networks_toast</item>
+        <item>@string/notify_changed_networks_notification</item>
+        <item>@string/notify_changed_networks_notification_sound</item>
+    </string-array>
+
+    <string-array name="notify_changed_networks_values" translatable="false">
+        <item>0</item>
+        <item>1</item>
+        <item>2</item>
+        <item>3</item>
+    </string-array>
+
+    <!-- Wifi connection notifications -->
+    <string name="wifi_notify_changed_networks">Wi\u2011Fi connected notification</string>
+    <string name="notify_changed_networks_default">Off (default)</string>
+    <string name="notify_changed_networks_toast">Toast</string>
+    <string name="notify_changed_networks_notification">Notification</string>
+    <string name="notify_changed_networks_notification_sound">Notification with sound</string>
 </resources>
