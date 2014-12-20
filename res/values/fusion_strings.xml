@@ -52,7 +52,8 @@
     <string name="advanced_gesture_title">Advanced</string>
     <!-- Fusion Status bar -->
     <string name="status_bar_title">Status bar</string>
-    <string name="status_bar_battery_style_cat">Battery style (Out of Service)</string>
+    <string name="status_bar_style_title">Status bar style</string>
+    <string name="status_bar_advanced_title">Advanced options</string>
     <!-- Fusion Advanced -->
     <string name="fusion_advanced_settings_title">Advanced</string>
     <!-- Fusion Privacy -->
