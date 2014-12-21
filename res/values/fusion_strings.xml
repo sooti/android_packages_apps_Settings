@@ -52,8 +52,9 @@
     <string name="advanced_gesture_title">Advanced</string>
     <!-- Fusion Status bar -->
     <string name="status_bar_title">Status bar</string>
-    <string name="status_bar_style_title">Status bar style</string>
+    <string name="battery_style_title">Battery style</string>
     <string name="status_bar_advanced_title">Advanced options</string>
+    <string name="battery_style_reset_message">Reset battery bar color?</string>
     <!-- Fusion Advanced -->
     <string name="fusion_advanced_settings_title">Advanced</string>
     <!-- Fusion Privacy -->
