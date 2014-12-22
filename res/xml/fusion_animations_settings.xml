@@ -22,6 +22,12 @@
         android:key="animations_options"
         android:title="@string/fusion_animations_settings_title" >
 
+        <PreferenceScreen
+            android:key="animation_controls"
+            android:title="@string/animation_controls_title"
+            android:summary="@string/animation_controls_summary"
+            android:fragment="com.android.settings.fusion.AnimationControls" />
+
         <ListPreference
             android:key="listview_animation"
             android:dialogTitle="@string/listview_animation_title"
