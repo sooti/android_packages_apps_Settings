@@ -45,6 +45,12 @@
             android:entryValues="@array/toast_animation_values"
             android:persistent="false" />
 
+        <PreferenceScreen
+            android:key="interface_animation_scroll"
+            android:fragment="com.android.settings.fusion.ScrollAnimationInterfaceSettings"
+            android:title="@string/scrolling_title"
+            android:summary="@string/scrolling_summary" />
+
     </PreferenceCategory>
 
 </PreferenceScreen>
