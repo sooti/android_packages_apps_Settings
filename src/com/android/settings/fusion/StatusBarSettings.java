@@ -19,6 +19,7 @@ package com.android.settings.fusion;
 import android.content.ContentResolver;
 import android.content.pm.PackageManager;
 import android.content.res.Resources;
+import android.database.ContentObserver;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.os.Handler;
@@ -28,12 +29,15 @@ import android.preference.Preference.OnPreferenceChangeListener;
 import android.preference.PreferenceScreen;
 import android.preference.SwitchPreference;
 import android.provider.Settings;
+import android.text.TextUtils;
 import android.util.Log;
 
 import com.android.settings.R;
 import com.android.settings.SettingsPreferenceFragment;
 
 import com.android.internal.util.fusion.DeviceUtils;
+
+import net.margaritov.preference.colorpicker.ColorPickerPreference;
 
 public class StatusBarSettings extends SettingsPreferenceFragment 
         implements OnPreferenceChangeListener {
@@ -42,10 +46,15 @@ public class StatusBarSettings extends SettingsPreferenceFragment
 
     private static final String KEY_STATUS_BAR_CLOCK = "clock_style_pref";
     private static final String KEY_STATUS_BAR_TICKER = "status_bar_ticker_enabled";
+    private static final String STATUS_BAR_CARRIER = "status_bar_carrier";
+    private static final String STATUS_BAR_CARRIER_COLOR = "status_bar_carrier_color";
 
+    static final int DEFAULT_STATUS_CARRIER_COLOR = 0xffffffff;
 
     private PreferenceScreen mClockStyle;
     private SwitchPreference mTicker;
+    SwitchPreference mStatusBarCarrier;
+    ColorPickerPreference mCarrierColorPicker;
 
     @Override
     public void onCreate(Bundle icicle) {
@@ -55,6 +64,9 @@ public class StatusBarSettings extends SettingsPreferenceFragment
         PreferenceScreen prefSet = getPreferenceScreen();
         ContentResolver resolver = getActivity().getContentResolver();
 
+        int intColor;
+        String hexColor;
+
         PackageManager pm = getPackageManager();
         Resources systemUiResources;
         try {
@@ -63,6 +75,20 @@ public class StatusBarSettings extends SettingsPreferenceFragment
             Log.e(TAG, "can't access systemui resources",e);
             return;
         }
+
+        // MIUI-like carrier Label
+        mStatusBarCarrier = (SwitchPreference) findPreference(STATUS_BAR_CARRIER);
+        mStatusBarCarrier.setChecked((Settings.System.getInt(getContentResolver(),
+                Settings.System.STATUS_BAR_CARRIER, 0) == 1));
+
+        // MIUI-like carrier Label color
+        mCarrierColorPicker = (ColorPickerPreference) findPreference(STATUS_BAR_CARRIER_COLOR);
+        mCarrierColorPicker.setOnPreferenceChangeListener(this);
+        intColor = Settings.System.getInt(getContentResolver(),
+                    Settings.System.STATUS_BAR_CARRIER_COLOR, DEFAULT_STATUS_CARRIER_COLOR);
+        hexColor = String.format("#%08x", (0xffffffff & intColor));
+        mCarrierColorPicker.setSummary(hexColor);
+        mCarrierColorPicker.setNewPreviewColor(intColor);
 
         mTicker = (SwitchPreference) prefSet.findPreference(KEY_STATUS_BAR_TICKER);
         final boolean tickerEnabled = systemUiResources.getBoolean(systemUiResources.getIdentifier(
@@ -95,12 +121,29 @@ public class StatusBarSettings extends SettingsPreferenceFragment
     }
 
     @Override
+    public boolean onPreferenceTreeClick(PreferenceScreen preferenceScreen, Preference preference) {
+       if (preference == mStatusBarCarrier) {
+           Settings.System.putInt(getContentResolver(),
+                   Settings.System.STATUS_BAR_CARRIER, mStatusBarCarrier.isChecked() ? 1 : 0);
+           return true;
+        }
+        return super.onPreferenceTreeClick(preferenceScreen, preference);
+    }
+
+    @Override
     public boolean onPreferenceChange(Preference preference, Object newValue) {
         ContentResolver resolver = getActivity().getContentResolver();
         if (preference == mTicker) {
             Settings.System.putInt(getContentResolver(),
                     Settings.System.STATUS_BAR_TICKER_ENABLED,
                     (Boolean) newValue ? 1 : 0);
+            return true;
+        } else if (preference == mCarrierColorPicker) {
+            String hex = ColorPickerPreference.convertToARGB(Integer.valueOf(String.valueOf(newValue)));
+            preference.setSummary(hex);
+            int intHex = ColorPickerPreference.convertToColorInt(hex);
+            Settings.System.putInt(getActivity().getApplicationContext().getContentResolver(),
+                    Settings.System.STATUS_BAR_CARRIER_COLOR, intHex);
             return true;
         }
         return false;
