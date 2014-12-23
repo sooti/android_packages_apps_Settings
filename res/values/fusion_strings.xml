@@ -248,6 +248,8 @@
     <string name="toast_GrowFadeCenter_animation">Grow fade center</string>
     <string name="toast_GrowFadeBottom_animation">Grow fade bottom</string>
     <string name="toast_Translucent_animation">Translucent animation</string>
+    <string name="toast_SlideLeftRight_animation">Slide Left To Right Animation</string>
+    <string name="toast_SlideRightLeft_animation">Slide Right To Left Animation</string>
 
     <!-- Screenshot sound -->
     <string name="screenshot_sound_title">Screenshot sound</string>
