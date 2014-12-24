@@ -43,10 +43,10 @@
         android:key="task_move_to_back"
         android:title="@string/task_move_to_back_title" />
 
-    <CheckBoxPreference
+    <!-- <SwitchPreference
         android:key="animation_no_override"
         android:title="@string/title_animation_no_override"
-        android:summary="@string/summary_animation_no_override" />
+        android:summary="@string/summary_animation_no_override" /> -->
 
     <ListPreference
         android:key="wallpaper_open"
