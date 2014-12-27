@@ -396,14 +396,17 @@ public class DisplaySettings extends SettingsPreferenceFragment implements
     @Override
     public void onResume() {
         super.onResume();
-
+        updateDisplayRotationPreferenceDescription();
+        final SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(mAdaptiveBacklight.getContext());
+        final boolean enabled = prefs.getBoolean(KEY_ADAPTIVE_BACKLIGHT,
+            AdaptiveBacklight.isEnabled());
         if (mAdaptiveBacklight != null) {
-            mAdaptiveBacklight.setChecked(AdaptiveBacklight.isEnabled());
+            mAdaptiveBacklight.setChecked(enabled);
         }
 
         if (mSunlightEnhancement != null) {
             if (SunlightEnhancement.isAdaptiveBacklightRequired() &&
-                    !AdaptiveBacklight.isEnabled()) {
+                    !enabled) {
                 mSunlightEnhancement.setEnabled(false);
             } else {
                 mSunlightEnhancement.setChecked(SunlightEnhancement.isEnabled());
@@ -616,8 +619,10 @@ public class DisplaySettings extends SettingsPreferenceFragment implements
         if (isSunlightEnhancementSupported()) {
             final boolean enabled = prefs.getBoolean(KEY_SUNLIGHT_ENHANCEMENT,
                     SunlightEnhancement.isEnabled());
+            final boolean enabledA = prefs.getBoolean(KEY_ADAPTIVE_BACKLIGHT,
+                    AdaptiveBacklight.isEnabled());
             if (SunlightEnhancement.isAdaptiveBacklightRequired() &&
-                    !AdaptiveBacklight.isEnabled()) {
+                    !enabledA) {
                 SunlightEnhancement.setEnabled(false);
                 Log.d(TAG, "SRE requires CABC, disabled");
             } else {
