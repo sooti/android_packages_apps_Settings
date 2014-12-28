@@ -70,16 +70,23 @@
     <PreferenceCategory
         android:title="@string/category_more_title" >
 
-    <!-- Equalizer -->
-    <Preference
-        android:id="@+id/equalizer_settings"
-        android:title="@string/equalizer_settings_title"
-        android:icon="@drawable/ic_fusion_equalizer" >
-        <intent
-            android:action="android.intent.action.MAIN"
-            android:targetClass="com.vipercn.viper4android_v2.activity.ViPER4Android"
-            android:targetPackage="com.vipercn.viper4android_v2" /> 
-    </Preference>
+        <!-- LockClock -->
+        <PreferenceScreen
+            android:id="@+id/lockclock"
+            android:title="@string/lockclock_settings_title"
+            android:fragment="com.android.settings.fusion.LockClockSettings"
+            android:icon="@drawable/ic_settings_more" />
+
+        <!-- Equalizer -->
+        <Preference
+            android:id="@+id/equalizer_settings"
+            android:title="@string/equalizer_settings_title"
+            android:icon="@drawable/ic_fusion_equalizer" >
+            <intent
+                android:action="android.intent.action.MAIN"
+                android:targetClass="com.vipercn.viper4android_v2.activity.ViPER4Android"
+                android:targetPackage="com.vipercn.viper4android_v2" /> 
+        </Preference>
 
         <!-- Advanced Settings -->
         <PreferenceScreen
