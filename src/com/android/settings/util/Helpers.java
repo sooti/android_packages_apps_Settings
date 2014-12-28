@@ -30,4 +30,3 @@ public class Helpers {
         CMDProcessor.startSuCommand("pkill -TERM -f com.android.systemui");
     }
 }
-
