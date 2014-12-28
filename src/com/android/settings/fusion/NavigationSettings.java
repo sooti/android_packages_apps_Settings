@@ -36,10 +36,12 @@ public class NavigationSettings extends SettingsPreferenceFragment
 
     private static final String KEY_ENABLE_NAVIGATION_BAR = "enable_nav_bar";
     private static final String KEY_BUTTON_BACKLIGHT = "button_backlight";
+    private static final String KEY_NAVIGATION_BAR_LEFT = "navigation_bar_left";
 
     private boolean mCheckPreferences;
 
     private SwitchPreference mEnableNavigationBar;
+    private SwitchPreference mNavigationBarLeftPref;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -47,6 +49,9 @@ public class NavigationSettings extends SettingsPreferenceFragment
         addPreferencesFromResource(R.xml.fusion_navigation_settings);
 
         final PreferenceScreen prefScreen = getPreferenceScreen();
+
+        // Navigation bar left
+        mNavigationBarLeftPref = (SwitchPreference) findPreference(KEY_NAVIGATION_BAR_LEFT);
 
         // Enable/disable navigation bar
         boolean hasNavBarByDefault = getResources().getBoolean(

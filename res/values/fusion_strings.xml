@@ -1050,4 +1050,8 @@
     <!-- Bluetooth accept all Filestypes -->
     <string name="bluetooth_accept_all_files">Accept all file types</string>
 
+    <!-- Navigation Bar left-handed mode-->
+    <string name="navigation_bar_left_title">Left-handed mode</string>
+    <string name="navigation_bar_left_summary">Place the navigation bar on the left side of the screen in landscape mode</string>
+
 </resources>
