@@ -1059,7 +1059,7 @@
     <string name="lock_clock_summary">View or change how the \'cLock\' Home  widget will display</string>
 
     <!-- LockClock materialize -->
-    <string name="lockclock_settings_title">Lock Clock</string>
+    <string name="lockclock_settings_title">LockClock</string>
     <string name="lock_clock_clock_section_title">Clock and alarm</string>
     <string name="lock_clock_clock_section_summary">View or change how the clock of the \'cLock\' Home widget will display</string>
     <string name="lock_clock_weather_section_title">Weather panel</string>

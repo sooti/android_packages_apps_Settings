@@ -75,7 +75,7 @@
             android:id="@+id/lockclock"
             android:title="@string/lockclock_settings_title"
             android:fragment="com.android.settings.fusion.LockClockSettings"
-            android:icon="@drawable/ic_settings_more" />
+            android:icon="@drawable/ic_lock_clock_settings" />
 
         <!-- Equalizer -->
         <Preference
