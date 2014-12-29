@@ -37,7 +37,17 @@
     <Preference
         android:key="fusion_nightly"
         android:title="@string/fusion_nightly_title"
-        android:summary="@string/fusion_nightly_summary" />	
+        android:summary="@string/fusion_nightly_summary" />
+
+    <!-- Fusion Changelog -->
+    <PreferenceScreen
+            android:key="changelog"
+            android:title="@string/fusion_changelog"
+            android:summary="@string/fusion_changelog_summary">
+        <intent android:action="android.intent.action.MAIN"
+                android:targetPackage="nl.dragon.fusion.fusionchangelog"
+                android:targetClass="nl.dragon.fusion.fusionchangelog.MainActivity" />
+    </PreferenceScreen>
 
     </PreferenceCategory>
 

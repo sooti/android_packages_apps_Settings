@@ -1087,5 +1087,7 @@
     <string name="fusion_gapps_summary">Fusion Gapps are generally recommended gapps for use on Fusion rom</string>   
     <string name="pa_gapps_title">PA Gapps</string>
     <string name="pa_gapps_summary">Fully packed with the majority of GAPPS, these are commonly used by users that do not want to download/install them later</string>
+    <string name="fusion_changelog">Latest changelogs</string>
+    <string name="fusion_changelog_summary">See the latest source changes for fusion rom</string>
 
 </resources>
