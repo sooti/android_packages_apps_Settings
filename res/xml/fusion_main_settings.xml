@@ -95,6 +95,14 @@
             android:fragment="com.android.settings.fusion.AdvancedSettings"
             android:icon="@drawable/ic_fusion_advanced_teal" />
 
+        <!-- Fusion Downloads  -->
+        <PreferenceScreen    
+            android:key="download_center"
+            android:fragment="com.android.settings.fusion.DownloadCenter"
+            android:title="@string/download_category"
+            android:summary="@string/download_category_summary" 
+	    android:icon="@drawable/ic_fusion_download_center" />
+
     </PreferenceCategory>
 
 </PreferenceScreen>
