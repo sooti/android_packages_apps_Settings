@@ -109,8 +109,6 @@ public class DisplaySettings extends SettingsPreferenceFragment implements
 
     private static final String KEY_DOZE_TIMEOUT = "doze_timeout";
 
-    private PreferenceScreen mDisplayRotationPreference;
-
     private static final String ROTATION_ANGLE_0 = "0";
     private static final String ROTATION_ANGLE_90 = "90";
     private static final String ROTATION_ANGLE_180 = "180";
