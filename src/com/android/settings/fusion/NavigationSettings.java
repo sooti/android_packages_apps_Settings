@@ -102,8 +102,8 @@ public class NavigationSettings extends SettingsPreferenceFragment
             }
             return true;
         } else if (preference == mOverflowButtonMode) {
-            int val = Integer.parseInt((String) newValue);
-            int index = mOverflowButtonMode.findIndexOfValue((String) newValue);
+            int val = Integer.parseInt((String) objValue);
+            int index = mOverflowButtonMode.findIndexOfValue((String) objValue);
             Settings.System.putInt(getContentResolver(), Settings.System.UI_OVERFLOW_BUTTON, val);
             mOverflowButtonMode.setSummary(mOverflowButtonMode.getEntries()[index]);
             Toast.makeText(getActivity(), R.string.keys_overflow_toast, Toast.LENGTH_LONG).show();
