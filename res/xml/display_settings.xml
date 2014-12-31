@@ -20,31 +20,6 @@
         settings:keywords="@string/keywords_display">
 
         <PreferenceCategory
-            android:key="category_fusion_options"
-            android:title="@string/display_category_fusion_options_title" >
-
-        <EditTextPreference
-                android:key="display_density"
-                android:title="@string/display_density"
-                android:summary="@string/display_density_summary"
-                android:persistent="false"
-                android:inputType="numberSigned" />
-
-        <SwitchPreference
-                android:key="disable_immersive_message"
-                android:title="@string/disable_immersive_message_title"
-                android:summary="@string/disable_immersive_message_summary"
-                android:persistent="false" />
-
-        <!-- Screen Recorder -->
-        <PreferenceScreen
-                android:key="screen_recorder"
-                android:title="@string/screen_recorder_title"
-                android:fragment="com.android.settings.fusion.ScreenRecorderSettings" />
-
-        </PreferenceCategory>
-
-        <PreferenceCategory
             android:key="category_general_display_options"
             android:title="@string/category_general_title" >
 

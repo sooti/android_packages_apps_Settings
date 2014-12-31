@@ -38,15 +38,16 @@
 
     <!-- Fusion General -->
     <string name="fusion_settings_title">Fusion</string>
-    <string name="display_category_fusion_options_title">Fusion options</string>
     <string name="category_general_title">General options</string>
     <string name="category_more_title">More options</string>
     <string name="statusbar_settings_title">Status bar</string>
     <string name="equalizer_settings_title">Equalizer</string>
     <!-- Fusion Interface -->
     <string name="fusion_interface_settings_title">Interface</string>
-    <!-- Fusion Animations -->
-    <string name="fusion_animations_settings_title">Animations</string>
+    <!-- Fusion Screen and Animations -->
+    <string name="fusion_screen_animations_settings_title">Screen &amp; Animations</string>
+    <string name="fusion_screen_settings_category">Screen options</string>
+    <string name="fusion_animations_settings_category">Animation options</string>
     <!-- Fusion Gestures -->
     <string name="gesture_title">Gestures</string>
     <string name="advanced_gesture_title">Advanced</string>

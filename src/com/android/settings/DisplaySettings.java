@@ -81,8 +81,6 @@ public class DisplaySettings extends SettingsPreferenceFragment implements
     /** If there is no setting in the provider, use this. */
     private static final int FALLBACK_SCREEN_TIMEOUT_VALUE = 30000;
 
-    private static final String PROP_DISPLAY_DENSITY = "persist.sf.lcd_density";
-
     private static final String KEY_DISPLAY_ROTATION = "display_rotation";
     private static final String KEY_SCREEN_TIMEOUT = "screen_timeout";
     private static final String KEY_FONT_SIZE = "font_size";
@@ -97,8 +95,6 @@ public class DisplaySettings extends SettingsPreferenceFragment implements
     private static final String KEY_WAKEUP_WHEN_PLUGGED_UNPLUGGED = "wakeup_when_plugged_unplugged";
     private static final String KEY_WAKEUP_CATEGORY = "category_wakeup_options";
     private static final String KEY_PROXIMITY_WAKE = "proximity_on_wake";
-    private static final String DISABLE_IMMERSIVE_MESSAGE = "disable_immersive_message";
-    private static final String KEY_DISPLAY_DENSITY = "display_density";
 
     private static final String CATEGORY_ADVANCED = "advanced_display_prefs";
     private static final String KEY_DISPLAY_COLOR = "color_calibration";
@@ -128,8 +124,6 @@ public class DisplaySettings extends SettingsPreferenceFragment implements
     private SwitchPreference mLiftToWakePreference;
     private SwitchPreference mDozePreference;
     private SwitchPreference mAutoBrightnessPreference;
-    private SwitchPreference mDisableIM;
-    private EditTextPreference mDisplayDensity;
 
     private SlimSeekBarPreference mDozeTimeout;
 
@@ -169,10 +163,6 @@ public class DisplaySettings extends SettingsPreferenceFragment implements
         mScreenTimeoutPreference.setOnPreferenceChangeListener(this);
         disableUnusableTimeouts(mScreenTimeoutPreference);
         updateTimeoutPreferenceDescription(currentTimeout);
-
-        mDisableIM = (SwitchPreference) findPreference(DISABLE_IMMERSIVE_MESSAGE);
-        mDisableIM.setChecked((Settings.System.getInt(resolver,
-                Settings.System.DISABLE_IMMERSIVE_MESSAGE, 0) == 1));
 
         mFontSizePref = (FontDialogPreference) findPreference(KEY_FONT_SIZE);
         mFontSizePref.setOnPreferenceChangeListener(this);
@@ -270,10 +260,6 @@ public class DisplaySettings extends SettingsPreferenceFragment implements
             advancedPrefs.removePreference(findPreference(KEY_PROXIMITY_WAKE));
             Settings.System.putInt(getContentResolver(), Settings.System.PROXIMITY_ON_WAKE, 1);
         }
-
-        mDisplayDensity = (EditTextPreference) findPreference(KEY_DISPLAY_DENSITY);
-        mDisplayDensity.setText(SystemProperties.get(PROP_DISPLAY_DENSITY, "0"));
-        mDisplayDensity.setOnPreferenceChangeListener(this);
     }
 
     private static boolean allowAllRotations(Context context) {
@@ -536,12 +522,7 @@ public class DisplaySettings extends SettingsPreferenceFragment implements
 
     @Override
     public boolean onPreferenceTreeClick(PreferenceScreen preferenceScreen, Preference preference) {
-        if  (preference == mDisableIM) {
-            boolean checked = ((SwitchPreference)preference).isChecked();
-            Settings.System.putInt(getActivity().getContentResolver(),
-                    Settings.System.DISABLE_IMMERSIVE_MESSAGE, checked ? 1:0);
-            return true;
-        } else if (preference == mAdaptiveBacklight) {
+        if (preference == mAdaptiveBacklight) {
             if (mSunlightEnhancement != null &&
                     SunlightEnhancement.isAdaptiveBacklightRequired()) {
                 mSunlightEnhancement.setEnabled(mAdaptiveBacklight.isChecked());
@@ -598,33 +579,7 @@ public class DisplaySettings extends SettingsPreferenceFragment implements
             Settings.System.putInt(getContentResolver(),
                     Settings.System.DOZE_TIMEOUT, dozeTimeout);
         }
-        if (KEY_DISPLAY_DENSITY.equals(key)) {
-            final int max = getResources().getInteger(R.integer.display_density_max);
-            final int min = getResources().getInteger(R.integer.display_density_min);
 
-            int value = SystemProperties.getInt(PROP_DISPLAY_DENSITY, 0);
-            try {
-                value = Integer.parseInt((String) objValue);
-            } catch (NumberFormatException e) {
-                Log.e(TAG, "Invalid input", e);
-            }
-
-            // 0 disables the custom density, so do not check for the value, else…
-            if (value != 0) {
-                // …cap the value
-                if (value < min) {
-                    value = min;
-                } else if (value > max) {
-                    value = max;
-                }
-            }
-
-            SystemProperties.set(PROP_DISPLAY_DENSITY, String.valueOf(value));
-            mDisplayDensity.setText(String.valueOf(value));
-
-            // we handle it, return false
-            return false;
-        }
         return true;
     }
 

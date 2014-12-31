@@ -15,12 +15,37 @@
 -->
 
 <PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android"
-        android:title="@string/fusion_animations_settings_title"
+        android:title="@string/fusion_screen_animations_settings_title"
         xmlns:settings="http://schemas.android.com/apk/res/com.android.settings">
 
     <PreferenceCategory
+        android:key="category_screen_options"
+        android:title="@string/fusion_screen_settings_category" >
+
+        <EditTextPreference
+            android:key="display_density"
+            android:title="@string/display_density"
+            android:summary="@string/display_density_summary"
+            android:persistent="false"
+            android:inputType="numberSigned" />
+
+        <SwitchPreference
+            android:key="disable_immersive_message"
+            android:title="@string/disable_immersive_message_title"
+            android:summary="@string/disable_immersive_message_summary"
+            android:persistent="false" />
+
+        <!-- Screen Recorder -->
+        <PreferenceScreen
+            android:key="screen_recorder"
+            android:title="@string/screen_recorder_title"
+            android:fragment="com.android.settings.fusion.ScreenRecorderSettings" />
+
+    </PreferenceCategory>
+
+    <PreferenceCategory
         android:key="animations_options"
-        android:title="@string/fusion_animations_settings_title" >
+        android:title="@string/fusion_animations_settings_category" >
 
         <PreferenceScreen
             android:key="animation_controls"
