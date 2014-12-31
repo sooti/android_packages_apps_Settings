@@ -16,6 +16,7 @@
 -keep class com.android.settings.notification.*
 -keep class com.android.settings.cyanogenmod.MoreDeviceSettings
 -keep class com.android.settings.fusion.**
+-keep class com.android.settings.voicewakeup.*
 -keep class com.koushikdutta.**
 
 # Keep click responders
