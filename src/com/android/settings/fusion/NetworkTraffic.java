@@ -16,6 +16,11 @@
 
 package com.android.settings.fusion;
 
+import android.app.Activity;
+import android.app.AlertDialog;
+import android.app.Dialog;
+import android.app.DialogFragment;
+import android.content.DialogInterface;
 import android.content.res.Resources;
 import android.net.TrafficStats;
 import android.os.Bundle;
@@ -27,6 +32,9 @@ import android.preference.PreferenceScreen;
 import android.preference.SwitchPreference;
 import android.provider.Settings;
 import android.util.Log;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
 
 import com.android.settings.R;
 import com.android.settings.SettingsPreferenceFragment;
@@ -53,6 +61,8 @@ public class NetworkTraffic extends SettingsPreferenceFragment
     private SwitchPreference mNetTrafficAutohide;
     private SeekBarPreference mNetTrafficAutohideThreshold;
 
+    private static final int MENU_RESET = Menu.FIRST;
+    private static final int DLG_RESET = 0;
     private static final int DEFAULT_TRAFFIC_COLOR = 0xffffffff;
 
     private int mNetTrafficVal;
@@ -119,6 +129,8 @@ public class NetworkTraffic extends SettingsPreferenceFragment
             mNetTrafficPeriod.setSummary(mNetTrafficPeriod.getEntry());
             mNetTrafficPeriod.setOnPreferenceChangeListener(this);
         }
+
+        setHasOptionsMenu(true);
     }
 
     private void updateNetworkTrafficState(int mIndex) {
@@ -137,10 +149,79 @@ public class NetworkTraffic extends SettingsPreferenceFragment
         }
     }
 
-    private void NetworkTrafficColorReset() {
-        Settings.System.putInt(getContentResolver(),
-                Settings.System.NETWORK_TRAFFIC_COLOR, DEFAULT_TRAFFIC_COLOR);
+    @Override
+    public void onResume() {
+        super.onResume();
+    }
 
+    @Override
+    public void onCreateOptionsMenu(Menu menu, MenuInflater inflater) {
+        menu.add(0, MENU_RESET, 0, R.string.network_traffic_color_reset)
+                .setIcon(R.drawable.ic_settings_reset)
+                .setShowAsAction(MenuItem.SHOW_AS_ACTION_ALWAYS);
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        switch (item.getItemId()) {
+            case MENU_RESET:
+                showDialogInner(DLG_RESET);
+                return true;
+             default:
+                return super.onContextItemSelected(item);
+        }
+    }
+
+    private void showDialogInner(int id) {
+        DialogFragment newFragment = MyAlertDialogFragment.newInstance(id);
+        newFragment.setTargetFragment(this, 0);
+        newFragment.show(getFragmentManager(), "dialog " + id);
+    }
+
+    public static class MyAlertDialogFragment extends DialogFragment {
+
+        public static MyAlertDialogFragment newInstance(int id) {
+            MyAlertDialogFragment frag = new MyAlertDialogFragment();
+            Bundle args = new Bundle();
+            args.putInt("id", id);
+            frag.setArguments(args);
+            return frag;
+        }
+
+        NetworkTraffic getOwner() {
+            return (NetworkTraffic) getTargetFragment();
+        }
+
+        @Override
+        public Dialog onCreateDialog(Bundle savedInstanceState) {
+            int id = getArguments().getInt("id");
+            switch (id) {
+                case DLG_RESET:
+                    return new AlertDialog.Builder(getActivity())
+                    .setTitle(R.string.network_traffic_color_reset)
+                    .setMessage(R.string.network_traffic_color_reset_message)
+                    .setNegativeButton(R.string.cancel, null)
+                    .setPositiveButton(R.string.dlg_ok,
+                        new DialogInterface.OnClickListener() {
+                        public void onClick(DialogInterface dialog, int which) {
+                            Settings.System.putInt(getActivity().getContentResolver(),
+                                    Settings.System.NETWORK_TRAFFIC_COLOR, DEFAULT_TRAFFIC_COLOR);
+
+                            getOwner().NetworkTrafficColorReset();
+                        }
+                    })
+                    .create();
+            }
+            throw new IllegalArgumentException("unknown id " + id);
+        }
+
+        @Override
+        public void onCancel(DialogInterface dialog) {
+
+        }
+    }
+
+    private void NetworkTrafficColorReset() {
         mNetTrafficColor.setNewPreviewColor(DEFAULT_TRAFFIC_COLOR);
         String hexColor = String.format("#%08x", (0xffffffff & DEFAULT_TRAFFIC_COLOR));
         mNetTrafficColor.setSummary(hexColor);

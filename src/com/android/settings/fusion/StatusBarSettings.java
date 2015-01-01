@@ -48,6 +48,7 @@ public class StatusBarSettings extends SettingsPreferenceFragment
     private static final String KEY_STATUS_BAR_TICKER = "status_bar_ticker_enabled";
     private static final String STATUS_BAR_CARRIER = "status_bar_carrier";
     private static final String STATUS_BAR_CARRIER_COLOR = "status_bar_carrier_color";
+    private static final String KEY_NETWORK_TRAFFIC_STATUS = "network_traffic";
 
     static final int DEFAULT_STATUS_CARRIER_COLOR = 0xffffffff;
 
@@ -55,6 +56,7 @@ public class StatusBarSettings extends SettingsPreferenceFragment
     private SwitchPreference mTicker;
     SwitchPreference mStatusBarCarrier;
     ColorPickerPreference mCarrierColorPicker;
+    private PreferenceScreen mNetworkTraffic;
 
     @Override
     public void onCreate(Bundle icicle) {
@@ -99,6 +101,9 @@ public class StatusBarSettings extends SettingsPreferenceFragment
 
         mClockStyle = (PreferenceScreen) prefSet.findPreference(KEY_STATUS_BAR_CLOCK);
         updateClockStyleDescription();
+
+        mNetworkTraffic = (PreferenceScreen) prefSet.findPreference(KEY_NETWORK_TRAFFIC_STATUS);
+        updateNetworkTrafficDescription();
     }
 
 
@@ -106,6 +111,19 @@ public class StatusBarSettings extends SettingsPreferenceFragment
     public void onResume() {
         super.onResume();
         updateClockStyleDescription();
+        updateNetworkTrafficDescription();
+    }
+
+    private void updateNetworkTrafficDescription() {
+        if (mNetworkTraffic == null) {
+            return;
+        }
+        if (Settings.System.getInt(getContentResolver(),
+                Settings.System.NETWORK_TRAFFIC_STATE, 1) != 0) {
+            mNetworkTraffic.setSummary(getString(R.string.enabled));
+        } else {
+            mNetworkTraffic.setSummary(getString(R.string.disabled));
+        }
     }
 
     private void updateClockStyleDescription() {
