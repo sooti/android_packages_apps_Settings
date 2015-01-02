@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package com.android.settings.fusion;
+package com.android.settings.fusion.qs;
 
 import android.content.pm.PackageManager;
 import android.content.res.Resources;
@@ -56,7 +56,7 @@ public class QsSettings extends SettingsPreferenceFragment
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         // Load the preferences from an XML resource
-        addPreferencesFromResource(R.xml.qs_settings);
+        addPreferencesFromResource(R.xml.fusion_qs_settings);
 
         PreferenceScreen prefs = getPreferenceScreen();
 

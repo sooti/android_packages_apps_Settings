@@ -17,6 +17,12 @@
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:settings="http://schemas.android.com/apk/res/com.android.settings">
 
+        <PreferenceScreen
+            android:key="qs_order"
+            android:title="@string/qs_order"
+            android:summary="@string/qs_order_summary"
+            android:fragment="com.android.settings.fusion.qs.QSTiles" />
+
         <com.android.settings.fusion.SystemSettingListPreference
             android:key="quick_pulldown"
             android:title="@string/title_quick_pulldown"
@@ -44,4 +50,3 @@
             android:persistent="false" />
 
 </PreferenceScreen>
-
