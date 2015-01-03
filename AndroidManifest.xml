@@ -272,7 +272,7 @@
         </activity>
 
         <activity android:name=".wifi.WifiSettingsForSetupWizardXL"
-                android:theme="@android:style/Theme.Material.Light.NoActionBar"
+                android:theme="@android:style/Theme.Material.NoActionBar"
                 android:screenOrientation="behind"
                 android:clearTaskOnLaunch="true"
                 android:windowSoftInputMode="adjustResize"
@@ -498,7 +498,7 @@
 
         <activity android:name="DateTimeSettingsSetupWizard"
                   android:label="@string/date_and_time"
-                  android:theme="@android:style/Theme.Material.Light.NoActionBar"
+                  android:theme="@android:style/Theme.Material.NoActionBar"
                   android:screenOrientation="behind">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
