@@ -453,6 +453,7 @@
     <string name="app_ops_summaries_bluetooth_change">Bluetooth change</string>
     <string name="app_ops_summaries_data_change">data change</string>
     <string name="app_ops_summaries_wake_up">wake up</string>
+    <string name="app_ops_summaries_su">Superuser</string>
     <string name="app_ops_summaries_send_mms">send MMS</string>
     <string name="app_ops_summaries_read_mms">read MMS</string>
     <string name="app_ops_summaries_write_mms">write MMS</string>
@@ -505,6 +506,7 @@
     <string name="app_ops_labels_bluetooth_change">Bluetooth change</string>
     <string name="app_ops_labels_data_change">Data change</string>
     <string name="app_ops_labels_wake_up">Wake up</string>
+    <string name="app_ops_labels_su">Root access</string>
     <string name="app_ops_labels_send_mms">Send MMS</string>
     <string name="app_ops_labels_read_mms">Read MMS</string>
     <string name="app_ops_labels_write_mms">Write MMS</string>
@@ -527,6 +529,7 @@
     <string name="app_ops_categories_media">Media</string>
     <string name="app_ops_categories_device">Device</string>
     <string name="app_ops_categories_bootup">Bootup</string>
+    <string name="app_ops_categories_su">Superuser</string>
 
     <!-- Recents panel settings -->
     <string name="recents_panel_settings">Recents panel settings</string>
