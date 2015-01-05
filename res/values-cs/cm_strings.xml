@@ -103,7 +103,6 @@
     <string name="choose_ringtone">Vybrat vyzvánění tón</string>
     <!-- Sound settings screen, setting option name to pick ringtone (a list dialog comes up)-->
     <string name="soundtone_title">Tón upozornění</string>
-    <string name="soundtone_summary" translatable="false">""</string>
     <!-- Title for application group setting screen -->
     <string name="profile_appgroups_title">Skupiny</string>
     <string name="profile_applist_title">Aplikace</string>

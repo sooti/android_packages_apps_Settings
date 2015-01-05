@@ -35,7 +35,7 @@ import android.util.Log;
 import com.android.settings.R;
 import com.android.settings.SettingsPreferenceFragment;
 
-import com.android.internal.util.fusion.DeviceUtils;
+//import com.android.internal.util.fusion.DeviceUtils;
 
 import net.margaritov.preference.colorpicker.ColorPickerPreference;
 
@@ -45,7 +45,6 @@ public class StatusBarSettings extends SettingsPreferenceFragment
     private static final String TAG = "StatusBarSettings";
 
     private static final String KEY_STATUS_BAR_CLOCK = "clock_style_pref";
-    private static final String KEY_STATUS_BAR_TICKER = "status_bar_ticker_enabled";
     private static final String STATUS_BAR_CARRIER = "status_bar_carrier";
     private static final String STATUS_BAR_CARRIER_COLOR = "status_bar_carrier_color";
     private static final String KEY_NETWORK_TRAFFIC_STATUS = "network_traffic";
@@ -53,7 +52,6 @@ public class StatusBarSettings extends SettingsPreferenceFragment
     static final int DEFAULT_STATUS_CARRIER_COLOR = 0xffffffff;
 
     private PreferenceScreen mClockStyle;
-    private SwitchPreference mTicker;
     SwitchPreference mStatusBarCarrier;
     ColorPickerPreference mCarrierColorPicker;
     private PreferenceScreen mNetworkTraffic;
@@ -78,6 +76,12 @@ public class StatusBarSettings extends SettingsPreferenceFragment
             return;
         }
 
+        /*if (DeviceUtils.isPhone(getActivity())) {
+            PreferenceScreen notifSystemIcons =
+                    (PreferenceScreen) findPreference("status_bar_notif_system_icons_settings");
+            notifSystemIcons.setTitle(R.string.status_bar_notif_system_icons_settings_title_phone);
+        }*/
+
         // MIUI-like carrier Label
         mStatusBarCarrier = (SwitchPreference) findPreference(STATUS_BAR_CARRIER);
         mStatusBarCarrier.setChecked((Settings.System.getInt(getContentResolver(),
@@ -91,13 +95,6 @@ public class StatusBarSettings extends SettingsPreferenceFragment
         hexColor = String.format("#%08x", (0xffffffff & intColor));
         mCarrierColorPicker.setSummary(hexColor);
         mCarrierColorPicker.setNewPreviewColor(intColor);
-
-        mTicker = (SwitchPreference) prefSet.findPreference(KEY_STATUS_BAR_TICKER);
-        final boolean tickerEnabled = systemUiResources.getBoolean(systemUiResources.getIdentifier(
-                    "com.android.systemui:bool/enable_ticker", null, null));
-        mTicker.setChecked(Settings.System.getInt(getContentResolver(),
-                Settings.System.STATUS_BAR_TICKER_ENABLED, tickerEnabled ? 1 : 0) == 1);
-        mTicker.setOnPreferenceChangeListener(this);
 
         mClockStyle = (PreferenceScreen) prefSet.findPreference(KEY_STATUS_BAR_CLOCK);
         updateClockStyleDescription();
@@ -151,12 +148,7 @@ public class StatusBarSettings extends SettingsPreferenceFragment
     @Override
     public boolean onPreferenceChange(Preference preference, Object newValue) {
         ContentResolver resolver = getActivity().getContentResolver();
-        if (preference == mTicker) {
-            Settings.System.putInt(getContentResolver(),
-                    Settings.System.STATUS_BAR_TICKER_ENABLED,
-                    (Boolean) newValue ? 1 : 0);
-            return true;
-        } else if (preference == mCarrierColorPicker) {
+        if (preference == mCarrierColorPicker) {
             String hex = ColorPickerPreference.convertToARGB(Integer.valueOf(String.valueOf(newValue)));
             preference.setSummary(hex);
             int intHex = ColorPickerPreference.convertToColorInt(hex);

@@ -42,17 +42,11 @@
                 android:summary="@string/status_bar_toggle_brightness_summary"
                 android:defaultValue="false" />
 
-        <SwitchPreference
-                android:key="status_bar_ticker_enabled"
-                android:title="@string/status_bar_ticker_title"
-                android:summary="@string/status_bar_ticker_summary"
-                android:defaultValue="true" />
-
-        <com.android.settings.cyanogenmod.SystemSettingSwitchPreference
-                android:key="status_bar_notif_count"
-                android:title="@string/status_bar_notif_count_title"
-                android:summary="@string/status_bar_notif_count_summary"
-                android:defaultValue="false" />
+        <PreferenceScreen
+                android:key="status_bar_notif_system_icons_settings"
+                android:title="@string/status_bar_notif_system_icons_settings_title"
+                android:summary="@string/status_bar_notif_system_icons_settings_summary"
+                android:fragment="com.android.settings.fusion.StatusBarNotifSystemIconsSettings" />
 
     </PreferenceCategory>
 
