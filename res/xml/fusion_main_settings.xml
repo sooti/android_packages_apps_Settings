@@ -50,13 +50,6 @@
             android:fragment="com.android.settings.fusion.StatusBarSettings"
             android:icon="@drawable/ic_fusion_statusbar" />
 
-        <!-- Privacy -->
-        <PreferenceScreen
-            android:id="@+id/fusion_privacy"
-            android:title="@string/fusion_privacy_settings_title"
-            android:fragment="com.android.settings.fusion.PrivacySettings"
-            android:icon="@drawable/ic_fusion_privacy_teal" />
-
         <!-- Sound -->
         <PreferenceScreen
             android:key="fusion_sound_settings"

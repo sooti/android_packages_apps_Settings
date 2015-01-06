@@ -2176,6 +2176,8 @@
 
         <activity android:name=".fusion.HeadsUpSettings" />
 
+        <activity android:name=".cyanogenmod.PrivacySettings" />
+
         <provider
             android:name="android.support.v4.content.FileProvider"
             android:authorities="com.android.settings.files"

@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2014 The Fusion Project
+ * Copyright (C) 2014 The CyanogenMod Project
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -14,25 +14,20 @@
  * limitations under the License.
  */
 
-package com.android.settings.fusion;
+package com.android.settings.cyanogenmod;
 
 import android.content.pm.PackageManager;
 import android.os.Bundle;
-import android.preference.CheckBoxPreference;
-import android.preference.ListPreference;
-import android.preference.Preference;
-import android.preference.Preference.OnPreferenceChangeListener;
-import android.preference.PreferenceCategory;
 import android.preference.PreferenceScreen;
-import android.provider.Settings;
-import android.provider.Settings.SettingNotFoundException;
 
+import com.android.internal.telephony.util.BlacklistUtils;
 import com.android.settings.R;
 import com.android.settings.SettingsPreferenceFragment;
 import com.android.settings.Utils;
 
-import com.android.internal.telephony.util.BlacklistUtils;
-
+/**
+ * Privacy settings
+ */
 public class PrivacySettings extends SettingsPreferenceFragment {
 
     private static final String KEY_BLACKLIST = "blacklist";
@@ -42,8 +37,7 @@ public class PrivacySettings extends SettingsPreferenceFragment {
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-
-        addPreferencesFromResource(R.xml.fusion_privacy_settings);
+        addPreferencesFromResource(R.xml.privacy_settings_cyanogenmod);
 
         mBlacklist = (PreferenceScreen) findPreference(KEY_BLACKLIST);
 

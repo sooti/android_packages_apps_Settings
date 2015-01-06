@@ -308,7 +308,7 @@
     </string-array>
 
     <!-- App ops, extension of AOSP app_ops_summaries and app_ops_labels -->
-    <string-array name="app_ops_summaries_fusion" translatable="false">
+    <string-array name="app_ops_summaries_cm" translatable="false">
         <item>@string/app_ops_summaries_coarse_location</item>
         <item>@string/app_ops_summaries_fine_location</item>
         <item>@string/app_ops_summaries_gps</item>
@@ -352,18 +352,18 @@
         <item>@string/app_ops_summaries_keep_awake</item>
         <item>@string/app_ops_summaries_monitor_location</item>
         <item>@string/app_ops_summaries_monitor_high_power_location</item>
-        <item>@string/app_ops_summaries_get_usage_stat</item>
-        <item>@string/app_ops_summaries_mute_microphone</item>
+        <item>@string/app_ops_summaries_get_usage_stats</item>
+        <item>@string/app_ops_summaries_mute_unmute_microphone</item>
         <item>@string/app_ops_summaries_toast_window</item>
         <item>@string/app_ops_summaries_project_media</item>
-        <item>@string/app_ops_summaries_vpn</item>
+        <item>@string/app_ops_summaries_activate_vpn</item>
         <item>@string/app_ops_summaries_wifi_change</item>
         <item>@string/app_ops_summaries_bluetooth_change</item>
         <item>@string/app_ops_summaries_send_mms</item>
         <item>@string/app_ops_summaries_read_mms</item>
         <item>@string/app_ops_summaries_write_mms</item>
         <item>@string/app_ops_summaries_auto_start</item>
-        <item>@string/app_ops_summaries_nfc</item>
+        <item>@string/app_ops_summaries_nfc_change</item>
         <item>@string/app_ops_summaries_delete_sms</item>
         <item>@string/app_ops_summaries_delete_mms</item>
         <item>@string/app_ops_summaries_delete_contacts</item>
@@ -373,7 +373,7 @@
         <item>@string/app_ops_summaries_su</item>
     </string-array>
 
-    <string-array name="app_ops_labels_fusion" translatable="false">
+    <string-array name="app_ops_labels_cm" translatable="false">
         <item>@string/app_ops_labels_location</item>
         <item>@string/app_ops_labels_location</item>
         <item>@string/app_ops_labels_location</item>
@@ -417,18 +417,18 @@
         <item>@string/app_ops_labels_keep_awake</item>
         <item>@string/app_ops_labels_location</item>
         <item>@string/app_ops_labels_location</item>
-        <item>@string/app_ops_labels_get_usage_stat</item>
-        <item>@string/app_ops_labels_mute_microphone</item>
+        <item>@string/app_ops_labels_get_usage_stats</item>
+        <item>@string/app_ops_labels_mute_unmute_microphone</item>
         <item>@string/app_ops_labels_toast_window</item>
         <item>@string/app_ops_labels_project_media</item>
-        <item>@string/app_ops_labels_vpn</item>
+        <item>@string/app_ops_labels_activate_vpn</item>
         <item>@string/app_ops_labels_wifi_change</item>
         <item>@string/app_ops_labels_bluetooth_change</item>
         <item>@string/app_ops_labels_send_mms</item>
         <item>@string/app_ops_labels_read_mms</item>
         <item>@string/app_ops_labels_write_mms</item>
         <item>@string/app_ops_labels_auto_start</item>
-        <item>@string/app_ops_labels_nfc</item>
+        <item>@string/app_ops_labels_nfc_change</item>
         <item>@string/app_ops_labels_delete_sms</item>
         <item>@string/app_ops_labels_delete_mms</item>
         <item>@string/app_ops_labels_delete_contacts</item>
@@ -439,7 +439,7 @@
     </string-array>
 
     <!-- Names of categories of app ops tabs -->
-    <string-array name="app_ops_categories_fusion" translatable="false">
+    <string-array name="app_ops_categories_cm" translatable="false">
         <item>@string/app_ops_categories_location</item>
         <item>@string/app_ops_categories_personal</item>
         <item>@string/app_ops_categories_messaging</item>
