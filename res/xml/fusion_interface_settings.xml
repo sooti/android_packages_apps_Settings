@@ -25,6 +25,11 @@
             android:summary="@string/app_circle_sidebar_summary_real"
             android:fragment="com.android.settings.fusion.AppCircleSidebar" />
 
+        <PreferenceScreen
+            android:key="power_menu"
+            android:title="@string/power_menu_title"
+            android:fragment="com.android.settings.fusion.PowerMenuActions" />
+
     <PreferenceCategory
         android:key="recents_panel"
         android:title="@string/recents_panel_settings" >
