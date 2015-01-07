@@ -15,13 +15,20 @@
 -->
 <PreferenceScreen
     xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:settings="http://schemas.android.com/apk/res/com.android.settings">
+    android:title="@string/notification_drawer_title">
 
         <PreferenceScreen
             android:key="qs_order"
             android:title="@string/qs_order"
             android:summary="@string/qs_order_summary"
             android:fragment="com.android.settings.fusion.qs.QSTiles" />
+
+        <SwitchPreference
+            android:key="qs_main_tiles"
+            android:title="@string/qs_main_tiles_title"
+            android:summaryOn="@string/qs_main_tiles_summary_on"
+            android:summaryOff="@string/qs_main_tiles_summary_off"
+            android:defaultValue="true" />
 
         <com.android.settings.fusion.SystemSettingListPreference
             android:key="quick_pulldown"

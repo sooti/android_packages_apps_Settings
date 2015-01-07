@@ -36,6 +36,14 @@
             android:fragment="com.android.settings.fusion.ScreenAnimationsSettings"
             android:icon="@drawable/ic_fusion_animations_teal" />
 
+        <!-- Notification drawer -->
+        <PreferenceScreen
+            android:id="@+id/notification_drawer_settings"
+            android:title="@string/notification_drawer_title"
+            android:fragment="com.android.settings.fusion.NotificationDrawerSettings"
+            android:icon="@drawable/ic_settings_notification_drawer"
+                />
+
         <!-- Gestures -->
         <PreferenceScreen
             android:id="@+id/gesture_settings"

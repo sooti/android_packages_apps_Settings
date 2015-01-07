@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2014 Slimroms
+ * Copyright (C) 2015 The Fusion Project
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package com.android.settings.fusion.qs;
+package com.android.settings.fusion;
 
 import android.content.pm.PackageManager;
 import android.content.res.Resources;
@@ -22,6 +22,7 @@ import android.media.Ringtone;
 import android.media.RingtoneManager;
 import android.net.Uri;
 import android.os.Bundle;
+import android.os.UserHandle;
 import android.preference.ListPreference;
 import android.preference.Preference;
 import android.preference.Preference.OnPreferenceChangeListener;
@@ -39,15 +40,17 @@ import com.android.settings.R;
 
 import java.util.Locale;
 
-public class QsSettings extends SettingsPreferenceFragment
+public class NotificationDrawerSettings extends SettingsPreferenceFragment
             implements OnPreferenceChangeListener  {
 
-    public static final String TAG = "QsSettings";
+    private static final String TAG = "NotificationDrawer";
 
+    private static final String TOGGLE_MAIN_TILES = "qs_main_tiles";
     private static final String PREF_QUICK_PULLDOWN = "quick_pulldown";
     private static final String PREF_BLOCK_ON_SECURE_KEYGUARD = "block_on_secure_keyguard";
     private static final String PREF_SMART_PULLDOWN = "smart_pulldown";
 
+    SwitchPreference mToggleMainTiles;
     ListPreference mQuickPulldown;
     private ListPreference mSmartPulldown;
     SwitchPreference mBlockOnSecureKeyguard;
@@ -56,9 +59,18 @@ public class QsSettings extends SettingsPreferenceFragment
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         // Load the preferences from an XML resource
-        addPreferencesFromResource(R.xml.fusion_qs_settings);
+        addPreferencesFromResource(R.xml.fusion_notification_drawer_settings);
 
         PreferenceScreen prefs = getPreferenceScreen();
+
+        mToggleMainTiles = (SwitchPreference) findPreference(TOGGLE_MAIN_TILES);
+        mToggleMainTiles.setOnPreferenceChangeListener(this);
+
+        boolean useMainTiles = Settings.Secure.getIntForUser(
+                getActivity().getContentResolver(), Settings.Secure.QS_USE_MAIN_TILES,
+                1, UserHandle.myUserId()) == 1;
+
+        mToggleMainTiles.setChecked(useMainTiles);
 
         mQuickPulldown = (ListPreference) findPreference(PREF_QUICK_PULLDOWN);
         mSmartPulldown = (ListPreference) findPreference(PREF_SMART_PULLDOWN);
@@ -100,7 +112,12 @@ public class QsSettings extends SettingsPreferenceFragment
 
     @Override
     public boolean onPreferenceChange(Preference preference, Object newValue) {
-        if (preference == mQuickPulldown) {
+        if(preference == mToggleMainTiles) {
+            Settings.Secure.putIntForUser(
+                    getActivity().getContentResolver(), Settings.Secure.QS_USE_MAIN_TILES,
+                    ((Boolean) newValue) ? 1 : 0, UserHandle.myUserId());
+            return true;
+        } else if (preference == mQuickPulldown) {
             int statusQuickPulldown = Integer.valueOf((String) newValue);
             Settings.System.putInt(getContentResolver(),
                     Settings.System.STATUS_BAR_QUICK_QS_PULLDOWN,
