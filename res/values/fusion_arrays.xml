@@ -142,47 +142,6 @@
         <item>2000</item>
     </string-array>
 
-    <!-- Navigation bar custom dimensions -->
-    <string-array name="navigation_bar_width_entries" translatable="false">
-        <item>@string/navigation_bar_size_42_dp_default</item>
-        <item>@string/navigation_bar_size_40_dp</item>
-        <item>@string/navigation_bar_size_36_dp</item>
-        <item>@string/navigation_bar_size_30_dp</item>
-        <item>@string/navigation_bar_size_24_dp</item>
-        <item>@string/navigation_bar_size_0_dp</item>
-    </string-array>
-
-    <string-array name="navigation_bar_width" translatable="false">
-        <item>42</item>
-        <item>40</item>
-        <item>36</item>
-        <item>30</item>
-        <item>24</item>
-        <item>0</item>
-    </string-array>
-
-    <string-array name="navigation_bar_height_entries" translatable="false">
-        <item>@string/navigation_bar_size_48_dp_default</item>
-        <item>@string/navigation_bar_size_44_dp</item>
-        <item>@string/navigation_bar_size_42_dp</item>
-        <item>@string/navigation_bar_size_40_dp</item>
-        <item>@string/navigation_bar_size_36_dp</item>
-        <item>@string/navigation_bar_size_30_dp</item>
-        <item>@string/navigation_bar_size_24_dp</item>
-        <item>@string/navigation_bar_size_0_dp</item>
-    </string-array>
-
-    <string-array name="navigation_bar_height" translatable="false">
-        <item>48</item>
-        <item>44</item>
-        <item>42</item>
-        <item>40</item>
-        <item>36</item>
-        <item>30</item>
-        <item>24</item>
-        <item>0</item>
-    </string-array>
-
     <!-- Toast Animations -->
     <string-array name="toast_animation_entries">
         <item>@string/toast_none_animation</item>
@@ -961,19 +920,6 @@
         <item>@string/screen_recorder_bitrate_20000000</item>
     </string-array>
 
-    <!-- Overflow button -->
-    <string-array name="overflow_button_entries" translatable="false">
-        <item>@string/overflow_auto_detect</item>
-        <item>@string/overflow_hide</item>
-        <item>@string/overflow_show</item>
-    </string-array>
-
-    <string-array name="overflow_button_values" translatable="false">
-        <item>0</item>
-        <item>1</item>
-        <item>2</item>
-    </string-array>
-
     <string-array name="power_menu_actions_array" translatable="false">
         <item>power</item>
         <item>reboot</item>
@@ -984,6 +930,20 @@
         <item>settings</item>
         <item>lockdown</item>
         <item>silent</item>
+    </string-array>
+
+    <string-array name="navbar_dialog_entries" translatable="false">
+        <item>@string/action_short</item>
+        <item>@string/action_long</item>
+        <item>@string/action_double</item>
+        <item>@string/action_icon</item>
+    </string-array>
+
+    <string-array name="navbar_dialog_values" translatable="false">
+        <item>**short**</item>
+        <item>**long**</item>
+        <item>**double**</item>
+        <item>**icon**</item>
     </string-array>
 
 </resources>
