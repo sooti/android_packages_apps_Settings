@@ -87,13 +87,12 @@ public class SecuritySettings extends SettingsPreferenceFragment
     private static final String KEY_ADVANCED_SECURITY = "advanced_security";
     private static final String KEY_MANAGE_TRUST_AGENTS = "manage_trust_agents";
     private static final String KEY_ADVANCED_REBOOT = "advanced_reboot";
+    private static final String LOCK_NUMPAD_RANDOM = "lock_numpad_random";
 
     private static final int SET_OR_CHANGE_LOCK_METHOD_REQUEST = 123;
     private static final int CONFIRM_EXISTING_FOR_BIOMETRIC_WEAK_IMPROVE_REQUEST = 124;
     private static final int CONFIRM_EXISTING_FOR_BIOMETRIC_WEAK_LIVELINESS_OFF = 125;
     private static final int CHANGE_TRUST_AGENT_SETTINGS = 126;
-    private static final String LOCKSCREEN_QUICK_UNLOCK_CONTROL = "quick_unlock_control";
-    private static final String LOCK_NUMPAD_RANDOM = "lock_numpad_random";
 
     // Misc Settings
     private static final String KEY_SIM_LOCK = "sim_lock";
@@ -321,15 +320,6 @@ public class SecuritySettings extends SettingsPreferenceFragment
             if (securityCategory != null && mVisibleGesture != null) {
                 securityCategory.removePreference(root.findPreference(KEY_VISIBLE_GESTURE));
             }
-        }
-
-        // Quick Unlock Screen Control
-        mQuickUnlockScreen = (SwitchPreference) root
-                .findPreference(LOCKSCREEN_QUICK_UNLOCK_CONTROL);
-        if (mQuickUnlockScreen != null) {
-            mQuickUnlockScreen.setChecked(Settings.Secure.getInt(getContentResolver(),
-                    Settings.Secure.LOCKSCREEN_QUICK_UNLOCK_CONTROL, 1) == 1);
-            mQuickUnlockScreen.setOnPreferenceChangeListener(this);
         }
 
         // Lock Numpad Random
@@ -779,10 +769,6 @@ public class SecuritySettings extends SettingsPreferenceFragment
             Settings.Secure.putInt(getContentResolver(), Settings.Global.SMS_OUTGOING_CHECK_MAX_COUNT,
                     smsSecurityCheck);
             updateSmsSecuritySummary(smsSecurityCheck);
-        } else if (preference == mQuickUnlockScreen) {
-            Settings.Secure.putInt(getActivity().getApplicationContext().getContentResolver(),
-                    Settings.Secure.LOCKSCREEN_QUICK_UNLOCK_CONTROL,
-                    (Boolean) value ? 1 : 0);
         } else if (preference == mLockNumpadRandom) {
             Settings.Secure.putInt(getContentResolver(),
                     Settings.Secure.LOCK_NUMPAD_RANDOM,
