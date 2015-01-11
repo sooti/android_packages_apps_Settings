@@ -1305,4 +1305,8 @@
     <string name="title_pref_menu_display">Menu visibility</string>
     <string name="summary_pref_menu_display">How and when do you want the menu buttons to appear?</string>
 
+    <!-- OmniSwitch -->
+    <string name="omniswitch_settings_title">OmniSwitch</string>
+    <string name="omniswitch_settings_category">OmniSwitch recents settings</string>
+
 </resources>
