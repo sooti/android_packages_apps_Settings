@@ -1307,6 +1307,6 @@
 
     <!-- OmniSwitch -->
     <string name="omniswitch_settings_title">OmniSwitch</string>
-    <string name="omniswitch_settings_category">OmniSwitch recents settings</string>
+    <string name="omniswitch_settings_summary">OmniSwitch recents settings</string>
 
 </resources>
