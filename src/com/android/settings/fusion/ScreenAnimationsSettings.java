@@ -48,17 +48,22 @@ public class ScreenAnimationsSettings extends SettingsPreferenceFragment impleme
     private static final String TAG = "ScreenAnimationsSettings";
 
     private static final String PROP_DISPLAY_DENSITY = "persist.sf.lcd_density";
+    private static final String PROP_DISPLAY_DENSITY_MAX = "ro.sf.lcd_density.max";
+    private static final String PROP_DISPLAY_DENSITY_MIN = "ro.sf.lcd_density.min";
+    private static final String PROP_DISPLAY_DENSITY_OVERRIDE = "persist.sf.lcd_density.override";
 
     private static final String KEY_LISTVIEW_ANIMATION = "listview_animation";
     private static final String KEY_LISTVIEW_INTERPOLATOR = "listview_interpolator";
     private static final String KEY_TOAST_ANIMATION = "toast_animation";
     private static final String DISABLE_IMMERSIVE_MESSAGE = "disable_immersive_message";
     private static final String KEY_DISPLAY_DENSITY = "display_density";
+    private static final String KEY_DISPLAY_DENSITY_OVERRIDE = "display_density_override";
 
     private ListPreference mListViewAnimation;
     private ListPreference mListViewInterpolator;
     private ListPreference mToastAnimation;
     private EditTextPreference mDisplayDensity;
+    private EditTextPreference mDisplayDensityOverride;
     private SwitchPreference mDisableIM;
 
     @Override
@@ -100,6 +105,10 @@ public class ScreenAnimationsSettings extends SettingsPreferenceFragment impleme
         mDisplayDensity = (EditTextPreference) findPreference(KEY_DISPLAY_DENSITY);
         mDisplayDensity.setText(SystemProperties.get(PROP_DISPLAY_DENSITY, "0"));
         mDisplayDensity.setOnPreferenceChangeListener(this);
+
+        mDisplayDensityOverride = (EditTextPreference) findPreference(KEY_DISPLAY_DENSITY_OVERRIDE);
+        mDisplayDensityOverride.setText(SystemProperties.get(PROP_DISPLAY_DENSITY_OVERRIDE, "0"));
+        mDisplayDensityOverride.setOnPreferenceChangeListener(this);
     }
 
     @Override
@@ -143,12 +152,12 @@ public class ScreenAnimationsSettings extends SettingsPreferenceFragment impleme
                     Toast.LENGTH_SHORT).show();
         }
         if (KEY_DISPLAY_DENSITY.equals(key)) {
-            final int max = getResources().getInteger(R.integer.display_density_max);
-            final int min = getResources().getInteger(R.integer.display_density_min);
+            final int max = SystemProperties.getInt(PROP_DISPLAY_DENSITY_MAX, 480);
+            final int min = SystemProperties.getInt(PROP_DISPLAY_DENSITY_MIN, 240);
 
             int value = SystemProperties.getInt(PROP_DISPLAY_DENSITY, 0);
             try {
-                value = Integer.parseInt((String) objValue);
+                value = Integer.parseInt(String.valueOf(objValue));
             } catch (NumberFormatException e) {
                 Log.e(TAG, "Invalid input", e);
             }
@@ -169,7 +178,20 @@ public class ScreenAnimationsSettings extends SettingsPreferenceFragment impleme
             // we handle it, return false
             return false;
         }
+        if (KEY_DISPLAY_DENSITY_OVERRIDE.equals(key)) {
+            int value = SystemProperties.getInt(PROP_DISPLAY_DENSITY_OVERRIDE, 0);
+            try {
+                value = Integer.parseInt(String.valueOf(objValue));
+            } catch (NumberFormatException e) {
+                Log.e(TAG, "Invalid input", e);
+            }
 
+            SystemProperties.set(PROP_DISPLAY_DENSITY_OVERRIDE, String.valueOf(value));
+            mDisplayDensityOverride.setText(String.valueOf(value));
+
+            // we handle it, return false
+            return false;
+        }
         return true;
     }
 
