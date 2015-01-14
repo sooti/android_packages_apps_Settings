@@ -68,4 +68,16 @@
 
     </PreferenceCategory>
 
+    <PreferenceCategory
+        android:key="lockscreen_category"
+        android:title="@string/lockscreen_category" >
+
+        <!-- Disable camera swipe -->
+        <com.android.settings.cyanogenmod.SystemSettingSwitchPreference
+            android:key="camera_widget_hide"
+            android:title="@string/camera_widget_hide"
+            android:summary="@string/camera_widget_hide_summary" />
+
+    </PreferenceCategory>
+
 </PreferenceScreen>

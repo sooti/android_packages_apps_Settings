@@ -15,6 +15,7 @@
 */
 package com.android.settings.fusion;
 
+import android.app.admin.DevicePolicyManager;
 import android.os.Bundle;
 import android.os.UserHandle;
 import android.content.ContentResolver;
@@ -40,9 +41,11 @@ public class InterfaceSettings extends SettingsPreferenceFragment implements
 
     private static final String KEY_OMNISWITCH = "omniswitch";
     public static final String OMNISWITCH_PACKAGE_NAME = "org.omnirom.omniswitch";
+    private static final String KEY_LOCKSCREEN_CAMERA_WIDGET_HIDE = "camera_widget_hide";
 
     private SwitchPreference mRecentsClearAll;
     private ListPreference mRecentsClearAllLocation;
+    private SwitchPreference mCameraWidgetHide;
 
     private Preference mOmniSwitch;
 
@@ -66,6 +69,18 @@ public class InterfaceSettings extends SettingsPreferenceFragment implements
         mRecentsClearAllLocation.setValue(String.valueOf(location));
         mRecentsClearAllLocation.setOnPreferenceChangeListener(this);
         updateRecentsLocation(location);
+
+        // Camera widget hide
+        mCameraWidgetHide = (SwitchPreference) findPreference("camera_widget_hide");
+        boolean mCameraDisabled = false;
+        DevicePolicyManager dpm =
+            (DevicePolicyManager) getActivity().getSystemService(Context.DEVICE_POLICY_SERVICE);
+        if (dpm != null) {
+            mCameraDisabled = dpm.getCameraDisabled(null);
+        }
+        if (mCameraDisabled){
+            mVariousShitScreen.removePreference(mCameraWidgetHide);
+        }
 
         mOmniSwitch = (Preference)
                 prefSet.findPreference(KEY_OMNISWITCH);
