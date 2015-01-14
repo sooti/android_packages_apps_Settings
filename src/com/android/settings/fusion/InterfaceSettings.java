@@ -21,6 +21,7 @@ import android.os.UserHandle;
 import android.content.ContentResolver;
 import android.content.pm.PackageManager;
 import android.content.res.Resources;
+import android.os.UserHandle;
 import android.preference.ListPreference;
 import android.preference.Preference;
 import android.preference.Preference.OnPreferenceChangeListener;
@@ -31,7 +32,9 @@ import android.provider.Settings;
 
 import com.android.settings.R;
 import com.android.settings.SettingsPreferenceFragment;
+
 import com.android.settings.util.Helpers;
+import com.android.settings.Utils;
 
 public class InterfaceSettings extends SettingsPreferenceFragment implements
         Preference.OnPreferenceChangeListener {
@@ -42,10 +45,12 @@ public class InterfaceSettings extends SettingsPreferenceFragment implements
     private static final String KEY_OMNISWITCH = "omniswitch";
     public static final String OMNISWITCH_PACKAGE_NAME = "org.omnirom.omniswitch";
     private static final String KEY_LOCKSCREEN_CAMERA_WIDGET_HIDE = "camera_widget_hide";
+    private static final String KEY_LOCKSCREEN_DIALER_WIDGET_HIDE = "dialer_widget_hide";
 
     private SwitchPreference mRecentsClearAll;
     private ListPreference mRecentsClearAllLocation;
     private SwitchPreference mCameraWidgetHide;
+    private SwitchPreference mDialerWidgetHide;
 
     private Preference mOmniSwitch;
 
@@ -79,7 +84,16 @@ public class InterfaceSettings extends SettingsPreferenceFragment implements
             mCameraDisabled = dpm.getCameraDisabled(null);
         }
         if (mCameraDisabled){
-            mVariousShitScreen.removePreference(mCameraWidgetHide);
+            prefSet.removePreference(mCameraWidgetHide);
+        }
+
+        // Dialer widget hide
+        mDialerWidgetHide = (SwitchPreference) prefSet.findPreference(KEY_LOCKSCREEN_DIALER_WIDGET_HIDE);
+        mDialerWidgetHide.setChecked(Settings.System.getIntForUser(resolver,
+            Settings.System.DIALER_WIDGET_HIDE, 0, UserHandle.USER_CURRENT) == 1);
+        mDialerWidgetHide.setOnPreferenceChangeListener(this);
+        if (!Utils.isVoiceCapable(getActivity())){
+            prefSet.removePreference(mDialerWidgetHide);
         }
 
         mOmniSwitch = (Preference)
@@ -101,6 +115,11 @@ public class InterfaceSettings extends SettingsPreferenceFragment implements
                     Settings.System.RECENTS_CLEAR_ALL_LOCATION, location, UserHandle.USER_CURRENT);
             updateRecentsLocation(location);
             return true;
+        if (preference == mDialerWidgetHide) {
+            boolean value = (Boolean) objValue;
+            Settings.System.putIntForUser(getActivity().getContentResolver(),
+                    Settings.System.DIALER_WIDGET_HIDE, value ? 1 : 0, UserHandle.USER_CURRENT);
+            Helpers.restartSystem();
         }
         return false;
     }
