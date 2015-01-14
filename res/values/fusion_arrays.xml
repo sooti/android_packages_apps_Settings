@@ -929,6 +929,7 @@
         <item>users</item>
         <item>settings</item>
         <item>lockdown</item>
+        <item>silent</item>
     </string-array>
 
     <string-array name="navbar_dialog_entries" translatable="false">
