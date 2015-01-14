@@ -100,14 +100,6 @@
                 android:icon="@drawable/ic_settings_home"
                 />
 
-        <!-- Navigation Settings -->
-        <dashboard-tile
-                android:id="@+id/navigation_settings"
-                android:title="@string/navigation_pref_title"
-                android:fragment="com.android.settings.fusion.NavigationSettings"
-                android:icon="@drawable/ic_settings_navigation_bar"
-                />
-
         <!-- Display -->
         <dashboard-tile
                 android:id="@+id/display_settings"

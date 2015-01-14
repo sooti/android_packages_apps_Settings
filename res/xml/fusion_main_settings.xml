@@ -41,8 +41,14 @@
             android:id="@+id/notification_drawer_settings"
             android:title="@string/notification_drawer_title"
             android:fragment="com.android.settings.fusion.NotificationDrawerSettings"
-            android:icon="@drawable/ic_settings_notification_drawer"
-                />
+            android:icon="@drawable/ic_settings_notification_drawer" />
+
+        <!-- Navigation Settings -->
+        <PreferenceScreen
+            android:id="@+id/navigation_settings"
+            android:title="@string/navigation_pref_title"
+            android:fragment="com.android.settings.fusion.NavigationSettings"
+            android:icon="@drawable/ic_settings_navigation_bar" />
 
         <!-- Gestures -->
         <PreferenceScreen
