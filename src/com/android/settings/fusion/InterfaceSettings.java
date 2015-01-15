@@ -18,6 +18,7 @@ package com.android.settings.fusion;
 import android.app.admin.DevicePolicyManager;
 import android.os.Bundle;
 import android.os.UserHandle;
+import android.content.Context;
 import android.content.ContentResolver;
 import android.content.pm.PackageManager;
 import android.content.res.Resources;
@@ -115,11 +116,11 @@ public class InterfaceSettings extends SettingsPreferenceFragment implements
                     Settings.System.RECENTS_CLEAR_ALL_LOCATION, location, UserHandle.USER_CURRENT);
             updateRecentsLocation(location);
             return true;
-        if (preference == mDialerWidgetHide) {
+        } else if (preference == mDialerWidgetHide) {
             boolean value = (Boolean) objValue;
             Settings.System.putIntForUser(getActivity().getContentResolver(),
                     Settings.System.DIALER_WIDGET_HIDE, value ? 1 : 0, UserHandle.USER_CURRENT);
-            Helpers.restartSystem();
+            Helpers.restartSystemUI();
         }
         return false;
     }
