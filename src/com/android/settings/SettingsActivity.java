@@ -84,8 +84,10 @@ import com.android.settings.deviceinfo.Memory;
 import com.android.settings.deviceinfo.UsbSettings;
 import com.android.settings.fuelgauge.BatterySaverSettings;
 import com.android.settings.fuelgauge.PowerUsageSummary;
+import com.android.settings.fusion.DisplayRotation;
 import com.android.settings.fusion.NavigationSettings;
 import com.android.settings.fusion.MainSettings;
+import com.android.settings.fusion.qs.QSTiles;
 import com.android.settings.notification.NotificationAppList;
 import com.android.settings.notification.OtherSoundSettings;
 import com.android.settings.profiles.NFCProfileTagCallback;
@@ -315,7 +317,9 @@ public class SettingsActivity extends Activity
             BlacklistSettings.class.getName(),
             com.android.settings.cyanogenmod.PrivacySettings.class.getName(),
             MainSettings.class.getName(),
-            NavigationSettings.class.getName()
+            NavigationSettings.class.getName(),
+            QSTiles.class.getName(),
+            DisplayRotation.class.getName()
     };
 
 
