@@ -13,7 +13,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package com.android.settings.cyanogenmod.fusion;
+package com.android.settings.fusion.qs;
 
 import android.content.Context;
 import android.graphics.Canvas;

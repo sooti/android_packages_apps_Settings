@@ -101,11 +101,6 @@ public class NotificationDrawerSettings extends SettingsPreferenceFragment
     }
 
     @Override
-    public void onResume() {
-        super.onResume();
-    }
-
-    @Override
     public boolean onPreferenceChange(Preference preference, Object newValue) {
         if (preference == mQuickPulldown) {
             int statusQuickPulldown = Integer.valueOf((String) newValue);
