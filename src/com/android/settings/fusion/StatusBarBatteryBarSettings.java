@@ -48,7 +48,7 @@ import java.util.Date;
 public class StatusBarBatteryBarSettings extends SettingsPreferenceFragment
     implements OnPreferenceChangeListener {
 
-    private static final String TAG = "BatteryStyle";
+    private static final String TAG = "StatusBarBatteryBar";
 
     private static final String PREF_BATT_BAR = "battery_bar_list";
     private static final String PREF_BATT_BAR_STYLE = "battery_bar_style";
