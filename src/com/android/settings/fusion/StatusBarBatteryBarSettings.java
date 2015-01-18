@@ -45,16 +45,10 @@ import net.margaritov.preference.colorpicker.ColorPickerPreference;
 
 import java.util.Date;
 
-public class StatusBarBatteryStyle extends SettingsPreferenceFragment
+public class StatusBarBatteryBarSettings extends SettingsPreferenceFragment
     implements OnPreferenceChangeListener {
 
     private static final String TAG = "BatteryStyle";
-
-    private static final String STATUS_BAR_SHOW_BATTERY_PERCENT = "status_bar_show_battery_percent";
-    private static final String STATUS_BAR_BATTERY_STYLE = "status_bar_battery_style";
-
-    private static final int STATUS_BAR_BATTERY_STYLE_HIDDEN = 4;
-    private static final int STATUS_BAR_BATTERY_STYLE_TEXT = 6;
 
     private static final String PREF_BATT_BAR = "battery_bar_list";
     private static final String PREF_BATT_BAR_STYLE = "battery_bar_style";
@@ -66,8 +60,6 @@ public class StatusBarBatteryStyle extends SettingsPreferenceFragment
 
     private static final int DLG_RESET = 0;
 
-    private ListPreference mStatusBarBattery;
-    private ListPreference mStatusBarBatteryShowPercent;
     private ListPreference mBatteryBar;
     private ListPreference mBatteryBarStyle;
     private ListPreference mBatteryBarThickness;
@@ -89,7 +81,7 @@ public class StatusBarBatteryStyle extends SettingsPreferenceFragment
             prefSet.removeAll();
         }
 
-        addPreferencesFromResource(R.xml.fusion_statusbar_battery_style);
+        addPreferencesFromResource(R.xml.fusion_statusbar_battery_bar);
         prefSet = getPreferenceScreen();
         ContentResolver resolver = getActivity().getContentResolver();
 
@@ -104,24 +96,6 @@ public class StatusBarBatteryStyle extends SettingsPreferenceFragment
             Log.e(TAG, "can't access systemui resources",e);
             return null;
         }
-
-        mStatusBarBattery = (ListPreference) findPreference(STATUS_BAR_BATTERY_STYLE);
-        mStatusBarBatteryShowPercent =
-                (ListPreference) findPreference(STATUS_BAR_SHOW_BATTERY_PERCENT);
-
-        int batteryStyle = Settings.System.getInt(resolver,
-                Settings.System.STATUS_BAR_BATTERY_STYLE, 0);
-        mStatusBarBattery.setValue(String.valueOf(batteryStyle));
-        mStatusBarBattery.setSummary(mStatusBarBattery.getEntry());
-        mStatusBarBattery.setOnPreferenceChangeListener(this);
-
-        int batteryShowPercent = Settings.System.getInt(resolver,
-                Settings.System.STATUS_BAR_SHOW_BATTERY_PERCENT, 0);
-        mStatusBarBatteryShowPercent.setValue(String.valueOf(batteryShowPercent));
-        mStatusBarBatteryShowPercent.setSummary(mStatusBarBatteryShowPercent.getEntry());
-        enableStatusBarBatteryDependents(batteryStyle);
-        mStatusBarBatteryShowPercent.setOnPreferenceChangeListener(this);
-
 
         mBatteryBar = (ListPreference) findPreference(PREF_BATT_BAR);
         mBatteryBar.setOnPreferenceChangeListener(this);
@@ -181,24 +155,7 @@ public class StatusBarBatteryStyle extends SettingsPreferenceFragment
         if (!mCheckPreferences) {
             return false;
         }
-        if (preference == mStatusBarBattery) {
-            int batteryStyle = Integer.valueOf((String) newValue);
-            int index = mStatusBarBattery.findIndexOfValue((String) newValue);
-            Settings.System.putInt(
-                    resolver, Settings.System.STATUS_BAR_BATTERY_STYLE, batteryStyle);
-            mStatusBarBattery.setSummary(mStatusBarBattery.getEntries()[index]);
-
-            enableStatusBarBatteryDependents(batteryStyle);
-            return true;
-        } else if (preference == mStatusBarBatteryShowPercent) {
-            int batteryShowPercent = Integer.valueOf((String) newValue);
-            int index = mStatusBarBatteryShowPercent.findIndexOfValue((String) newValue);
-            Settings.System.putInt(
-                    resolver, Settings.System.STATUS_BAR_SHOW_BATTERY_PERCENT, batteryShowPercent);
-            mStatusBarBatteryShowPercent.setSummary(
-                    mStatusBarBatteryShowPercent.getEntries()[index]);
-            return true;
-        } else if (preference == mBatteryBarColor) {
+        if (preference == mBatteryBarColor) {
             String hex = ColorPickerPreference.convertToARGB(Integer
                     .valueOf(String.valueOf(newValue)));
             preference.setSummary(hex);
@@ -256,8 +213,8 @@ public class StatusBarBatteryStyle extends SettingsPreferenceFragment
             return frag;
         }
 
-        StatusBarBatteryStyle getOwner() {
-            return (StatusBarBatteryStyle) getTargetFragment();
+        StatusBarBatteryBarSettings getOwner() {
+            return (StatusBarBatteryBarSettings) getTargetFragment();
         }
 
         @Override
@@ -299,15 +256,6 @@ public class StatusBarBatteryStyle extends SettingsPreferenceFragment
             mBatteryBarThickness.setEnabled(true);
             mBatteryBarChargingAnimation.setEnabled(true);
             mBatteryBarColor.setEnabled(true);
-        }
-    }
-
-    private void enableStatusBarBatteryDependents(int batteryIconStyle) {
-        if (batteryIconStyle == STATUS_BAR_BATTERY_STYLE_HIDDEN ||
-                batteryIconStyle == STATUS_BAR_BATTERY_STYLE_TEXT) {
-            mStatusBarBatteryShowPercent.setEnabled(false);
-        } else {
-            mStatusBarBatteryShowPercent.setEnabled(true);
         }
     }
 }
