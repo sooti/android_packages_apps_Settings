@@ -46,10 +46,10 @@
             android:entryValues="@array/smart_pulldown_values"
             android:persistent="false" />
 
-        <com.android.settings.cyanogenmod.SystemSettingSwitchPreference
+        <SwitchPreference
             android:key="qs_show_brightness_slider"
             android:title="@string/qs_brightness_slider_title"
-            android:summary="@string/qs_brightness_slider_summary"
+            android:persistent="false"
             android:defaultValue="true"/>
 
         <com.android.settings.cyanogenmod.SystemSettingSwitchPreference
