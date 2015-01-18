@@ -101,7 +101,7 @@ public class NotificationDrawerSettings extends SettingsPreferenceFragment
         }
 
         // Brightness slider
-        mBrightnessSlider = (SwitchPreference) prefSet.findPreference(PREF_QS_SHOW_BRIGHTNESS_SLIDER);
+        mBrightnessSlider = (SwitchPreference) prefs.findPreference(PREF_QS_SHOW_BRIGHTNESS_SLIDER);
         mBrightnessSlider.setChecked(Settings.System.getIntForUser(getActivity().getContentResolver(),
             Settings.System.QS_SHOW_BRIGHTNESS_SLIDER, 1, UserHandle.USER_CURRENT) == 1);
         mBrightnessSlider.setOnPreferenceChangeListener(this);
