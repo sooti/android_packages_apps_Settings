@@ -42,26 +42,24 @@ import java.util.ArrayList;
 import com.android.settings.R;
 import com.android.settings.SettingsPreferenceFragment;
 
-public class ScreenAnimationsSettings extends SettingsPreferenceFragment implements
+public class AnimationsSettings extends SettingsPreferenceFragment implements
         Preference.OnPreferenceChangeListener, OnPreferenceClickListener {
-    private static final String TAG = "ScreenAnimationsSettings";
+    private static final String TAG = "AnimationsSettings";
 
     private static final String KEY_LISTVIEW_ANIMATION = "listview_animation";
     private static final String KEY_LISTVIEW_INTERPOLATOR = "listview_interpolator";
     private static final String KEY_TOAST_ANIMATION = "toast_animation";
-    private static final String DISABLE_IMMERSIVE_MESSAGE = "disable_immersive_message";
 
     private ListPreference mListViewAnimation;
     private ListPreference mListViewInterpolator;
     private ListPreference mToastAnimation;
-    private SwitchPreference mDisableIM;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         ContentResolver resolver = getActivity().getContentResolver();
 
-        addPreferencesFromResource(R.xml.fusion_screen_animations_settings);
+        addPreferencesFromResource(R.xml.fusion_animations_settings);
 
         PreferenceScreen prefSet = getPreferenceScreen();
 
@@ -87,21 +85,10 @@ public class ScreenAnimationsSettings extends SettingsPreferenceFragment impleme
                 getContentResolver(),Settings.System.TOAST_ANIMATION, 1);
         mToastAnimation.setValueIndex(CurrentToastAnimation);
         mToastAnimation.setOnPreferenceChangeListener(this);
-
-        mDisableIM = (SwitchPreference) findPreference(DISABLE_IMMERSIVE_MESSAGE);
-        mDisableIM.setChecked((Settings.System.getInt(resolver,
-                Settings.System.DISABLE_IMMERSIVE_MESSAGE, 0) == 1));
     }
 
     @Override
     public boolean onPreferenceTreeClick(PreferenceScreen preferenceScreen, Preference preference) {
-        if  (preference == mDisableIM) {
-            boolean checked = ((SwitchPreference)preference).isChecked();
-            Settings.System.putInt(getActivity().getContentResolver(),
-                    Settings.System.DISABLE_IMMERSIVE_MESSAGE, checked ? 1:0);
-            return true;
-        }
-
         return super.onPreferenceTreeClick(preferenceScreen, preference);
     }
 

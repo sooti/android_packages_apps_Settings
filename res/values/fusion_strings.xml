@@ -33,6 +33,8 @@
     <string name="text_title">Text</string>
     <string name="reset_message">Reset all entries to default?</string>
     <string name="reset_option_message">Reset values to\nAndroid- or Fusion default?</string>
+    <string name="dialog_restart">Restart</string>
+    <string name="dialog_cancel">Cancel</string>
 
     <!-- Color Picker -->
     <string name="dialog_color_picker">Color picker</string>
@@ -51,9 +53,11 @@
     <string name="equalizer_settings_title">Equalizer</string>
     <!-- Fusion Interface -->
     <string name="fusion_interface_settings_title">Interface</string>
+    <!-- Fusion Display Settings -->
+    <string name="display_settings">Display</string>
+    <string name="display_settings_title">Display settings</string>
     <!-- Fusion Screen and Animations -->
-    <string name="fusion_screen_animations_settings_title">Screen &amp; Animations</string>
-    <string name="fusion_screen_settings_category">Screen options</string>
+    <string name="fusion_animations_settings_title">Animations</string>
     <string name="lockscreen_category">Lockscreen</string>
     <string name="fusion_animations_settings_category">Animation options</string>
     <!-- Fusion Gestures -->
@@ -1344,5 +1348,22 @@
     <!-- Privacy guard notification -->
     <string name="privacy_guard_notification_title">Notification</string>
     <string name="privacy_guard_notifiation_summary">Show a notification if privacy guard is active</string>
+
+    <!-- [CHAR LIMIT=40] Sound & display settings screen, title of dialog for picking LCD density -->
+    <!-- Fusion settings screen, setting option name to change LCD density -->
+    <string name="lcd_density">LCD density</string>
+    <string name="dialog_title_lcd_density">LCD density</string>
+    <!-- Fusion display settings screen, setting option summary to change LCD density -->
+    <string name="lcd_density_summary">xxx DPI</string>
+    <string name="custom_density_title">Change to whatever you like</string>
+    <string name="custom_density_summary">If you ever have compatibility issues with the Play Store, be sure to doublecheck if a Multi-DPI Play Store is installed</string>
+    <string name="custom_density_summary_invalid">"INVALID DENSITY!"</string>
+    <string name="custom_density">Custom</string>
+    <string name="set_custom_density_title">Set custom density</string>
+    <string name="set_custom_density_set">Set</string>
+    <string name="custom_density_dialog_title">WARNING!</string>
+    <string name="custom_density_dialog_summary">Changing your default LCD density can sometimes cause certain apps to not function properly and/or the playstore to show apps being incompatible with your device"</string>
+    <string name="dpi">DPI</string>
+    <string name="custom_density_warning">Restart the system and apply selected density?</string>
 
 </resources>

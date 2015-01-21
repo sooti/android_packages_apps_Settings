@@ -29,12 +29,19 @@
             android:fragment="com.android.settings.fusion.InterfaceSettings"
             android:icon="@drawable/ic_fusion_interface_teal" />
 
-        <!-- Screen and Animations -->
+        <!-- Animations -->
         <PreferenceScreen
             android:id="@+id/screen_animations_settings"
-            android:title="@string/fusion_screen_animations_settings_title"
-            android:fragment="com.android.settings.fusion.ScreenAnimationsSettings"
+            android:title="@string/fusion_animations_settings_title"
+            android:fragment="com.android.settings.fusion.AnimationsSettings"
             android:icon="@drawable/ic_fusion_animations_teal" />
+
+        <!-- Display -->
+        <PreferenceScreen
+            android:key="display_settings"
+            android:fragment="com.android.settings.fusion.DisplaySettings"
+            android:title="@string/display_settings_title"
+            android:icon="@drawable/ic_settings_display" />
 
         <!-- Notification drawer -->
         <PreferenceScreen
