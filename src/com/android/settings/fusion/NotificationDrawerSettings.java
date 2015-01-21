@@ -102,11 +102,11 @@ public class NotificationDrawerSettings extends SettingsPreferenceFragment
 
         // Brightness slider
         mBrightnessSlider = (SwitchPreference) prefs.findPreference(PREF_QS_SHOW_BRIGHTNESS_SLIDER);
-        mBrightnessSlider.setChecked(Settings.System.getIntForUser(getActivity().getContentResolver(),
-            Settings.System.QS_SHOW_BRIGHTNESS_SLIDER, 1, UserHandle.USER_CURRENT) == 1);
+        mBrightnessSlider.setChecked(Settings.Secure.getIntForUser(getActivity().getContentResolver(),
+            Settings.Secure.QS_SHOW_BRIGHTNESS_SLIDER, 1, UserHandle.USER_CURRENT) == 1);
         mBrightnessSlider.setOnPreferenceChangeListener(this);
-        int brightnessSlider = Settings.System.getIntForUser(getContentResolver(),
-                Settings.System.QS_SHOW_BRIGHTNESS_SLIDER, 1, UserHandle.USER_CURRENT);
+        int brightnessSlider = Settings.Secure.getIntForUser(getContentResolver(),
+                Settings.Secure.QS_SHOW_BRIGHTNESS_SLIDER, 1, UserHandle.USER_CURRENT);
         updateBrightnessSliderSummary(brightnessSlider);
     }
 
@@ -132,11 +132,11 @@ public class NotificationDrawerSettings extends SettingsPreferenceFragment
                     (Boolean) newValue ? 1 : 0);
             return true;
         } else if (preference == mBrightnessSlider) {
-            Settings.System.putIntForUser(getContentResolver(),
-                    Settings.System.QS_SHOW_BRIGHTNESS_SLIDER,
+            Settings.Secure.putIntForUser(getContentResolver(),
+                    Settings.Secure.QS_SHOW_BRIGHTNESS_SLIDER,
                     (Boolean) newValue ? 1 : 0, UserHandle.USER_CURRENT);
-            int brightnessSlider = Settings.System.getIntForUser(getContentResolver(),
-                    Settings.System.QS_SHOW_BRIGHTNESS_SLIDER, 1,
+            int brightnessSlider = Settings.Secure.getIntForUser(getContentResolver(),
+                    Settings.Secure.QS_SHOW_BRIGHTNESS_SLIDER, 1,
                     UserHandle.USER_CURRENT);
             updateBrightnessSliderSummary(brightnessSlider);
             return true;

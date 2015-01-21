@@ -65,10 +65,10 @@ public class QSTiles extends Fragment implements
         super.onActivityCreated(savedInstanceState);
 
         ContentResolver resolver = getActivity().getContentResolver();
-        String order = Settings.System.getString(resolver, Settings.System.QS_TILES);
+        String order = Settings.Secure.getString(resolver, Settings.Secure.QS_TILES);
         if (TextUtils.isEmpty(order)) {
             order = QS_DEFAULT_ORDER;
-            Settings.System.putString(resolver, Settings.System.QS_TILES, order);
+            Settings.Secure.putString(resolver, Settings.Secure.QS_TILES, order);
         }
 
         for (String tileType: order.split(",")) {
@@ -138,7 +138,7 @@ public class QSTiles extends Fragment implements
 
         // We load the added tiles and compare it to the list of available tiles.
         // We only show the tiles that aren't already on the grid.
-        String order = Settings.System.getString(resolver, Settings.System.QS_TILES);
+        String order = Settings.Secure.getString(resolver, Settings.Secure.QS_TILES);
 
         List<String> savedTiles = Arrays.asList(order.split(","));
 
@@ -212,8 +212,8 @@ public class QSTiles extends Fragment implements
     }
 
     public static int determineTileCount(Context context) {
-        String order = Settings.System.getString(context.getContentResolver(),
-                Settings.System.QS_TILES);
+        String order = Settings.Secure.getString(context.getContentResolver(),
+                Settings.Secure.QS_TILES);
         if (TextUtils.isEmpty(order)) {
             order = QS_DEFAULT_ORDER;
         }
