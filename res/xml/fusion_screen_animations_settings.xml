@@ -22,13 +22,6 @@
         android:key="category_screen_options"
         android:title="@string/fusion_screen_settings_category" >
 
-        <EditTextPreference
-            android:key="display_density"
-            android:title="@string/display_density"
-            android:summary="@string/display_density_summary"
-            android:persistent="false"
-            android:inputType="numberSigned" />
-
         <SwitchPreference
             android:key="disable_immersive_message"
             android:title="@string/disable_immersive_message_title"

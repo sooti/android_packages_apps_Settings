@@ -28,7 +28,6 @@ import android.os.Bundle;
 import android.os.RemoteException;
 import android.os.SystemProperties;
 import android.preference.SwitchPreference;
-import android.preference.EditTextPreference;
 import android.preference.ListPreference;
 import android.preference.Preference;
 import android.preference.Preference.OnPreferenceClickListener;
@@ -47,18 +46,14 @@ public class ScreenAnimationsSettings extends SettingsPreferenceFragment impleme
         Preference.OnPreferenceChangeListener, OnPreferenceClickListener {
     private static final String TAG = "ScreenAnimationsSettings";
 
-    private static final String PROP_DISPLAY_DENSITY = "persist.sf.lcd_density";
-
     private static final String KEY_LISTVIEW_ANIMATION = "listview_animation";
     private static final String KEY_LISTVIEW_INTERPOLATOR = "listview_interpolator";
     private static final String KEY_TOAST_ANIMATION = "toast_animation";
     private static final String DISABLE_IMMERSIVE_MESSAGE = "disable_immersive_message";
-    private static final String KEY_DISPLAY_DENSITY = "display_density";
 
     private ListPreference mListViewAnimation;
     private ListPreference mListViewInterpolator;
     private ListPreference mToastAnimation;
-    private EditTextPreference mDisplayDensity;
     private SwitchPreference mDisableIM;
 
     @Override
@@ -96,10 +91,6 @@ public class ScreenAnimationsSettings extends SettingsPreferenceFragment impleme
         mDisableIM = (SwitchPreference) findPreference(DISABLE_IMMERSIVE_MESSAGE);
         mDisableIM.setChecked((Settings.System.getInt(resolver,
                 Settings.System.DISABLE_IMMERSIVE_MESSAGE, 0) == 1));
-
-        mDisplayDensity = (EditTextPreference) findPreference(KEY_DISPLAY_DENSITY);
-        mDisplayDensity.setText(SystemProperties.get(PROP_DISPLAY_DENSITY, "0"));
-        mDisplayDensity.setOnPreferenceChangeListener(this);
     }
 
     @Override
@@ -141,33 +132,6 @@ public class ScreenAnimationsSettings extends SettingsPreferenceFragment impleme
             mToastAnimation.setSummary(mToastAnimation.getEntries()[index]);
             Toast.makeText(getActivity(), "Toast animation test!!!",
                     Toast.LENGTH_SHORT).show();
-        }
-        if (KEY_DISPLAY_DENSITY.equals(key)) {
-            final int max = getResources().getInteger(R.integer.display_density_max);
-            final int min = getResources().getInteger(R.integer.display_density_min);
-
-            int value = SystemProperties.getInt(PROP_DISPLAY_DENSITY, 0);
-            try {
-                value = Integer.parseInt((String) objValue);
-            } catch (NumberFormatException e) {
-                Log.e(TAG, "Invalid input", e);
-            }
-
-            // 0 disables the custom density, so do not check for the value, else…
-            if (value != 0) {
-                // …cap the value
-                if (value < min) {
-                    value = min;
-                } else if (value > max) {
-                    value = max;
-                }
-            }
-
-            SystemProperties.set(PROP_DISPLAY_DENSITY, String.valueOf(value));
-            mDisplayDensity.setText(String.valueOf(value));
-
-            // we handle it, return false
-            return false;
         }
 
         return true;
