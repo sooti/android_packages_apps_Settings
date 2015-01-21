@@ -22,6 +22,13 @@
         android:key="category_screen_options"
         android:title="@string/fusion_screen_settings_category" >
 
+        <EditTextPreference
+            android:key="display_density"
+            android:title="@string/display_density"
+            android:summary="@string/display_density_summary"
+            android:persistent="false"
+            android:inputType="numberSigned" />
+
         <SwitchPreference
             android:key="disable_immersive_message"
             android:title="@string/disable_immersive_message_title"
@@ -34,26 +41,6 @@
             android:title="@string/screen_recorder_title"
             android:summary="@string/screen_recorder_summary"
             android:fragment="com.android.settings.fusion.ScreenRecorderSettings" />
-
-    </PreferenceCategory>
-
-    <PreferenceCategory
-            android:key="display_density_prefs"
-            android:title="@string/display_density">
-
-        <EditTextPreference
-                android:key="display_density"
-                android:title="@string/display_density"
-                android:summary="@string/display_density_summary"
-                android:persistent="false"
-                android:inputType="numberSigned" />
-
-        <EditTextPreference
-                android:key="display_density_override"
-                android:title="@string/display_density_override"
-                android:summary="@string/display_density_override_summary"
-                android:persistent="false"
-                android:inputType="numberSigned" />
 
     </PreferenceCategory>
 
