@@ -83,9 +83,10 @@ public class StatusBarSettings extends SettingsPreferenceFragment
         }*/
 
         // MIUI-like carrier Label
-        mStatusBarCarrier = (SwitchPreference) findPreference(STATUS_BAR_CARRIER);
+        mStatusBarCarrier = (SwitchPreference) prefSet.findPreference(STATUS_BAR_CARRIER);
         mStatusBarCarrier.setChecked((Settings.System.getInt(getContentResolver(),
                 Settings.System.STATUS_BAR_CARRIER, 0) == 1));
+        mStatusBarCarrier.setOnPreferenceChangeListener(this);
 
         // MIUI-like carrier Label color
         mCarrierColorPicker = (ColorPickerPreference) findPreference(STATUS_BAR_CARRIER_COLOR);
@@ -137,11 +138,7 @@ public class StatusBarSettings extends SettingsPreferenceFragment
 
     @Override
     public boolean onPreferenceTreeClick(PreferenceScreen preferenceScreen, Preference preference) {
-       if (preference == mStatusBarCarrier) {
-           Settings.System.putInt(getContentResolver(),
-                   Settings.System.STATUS_BAR_CARRIER, mStatusBarCarrier.isChecked() ? 1 : 0);
-           return true;
-        }
+        // If we didn't handle it, let preferences handle it.
         return super.onPreferenceTreeClick(preferenceScreen, preference);
     }
 
@@ -154,6 +151,11 @@ public class StatusBarSettings extends SettingsPreferenceFragment
             int intHex = ColorPickerPreference.convertToColorInt(hex);
             Settings.System.putInt(getActivity().getApplicationContext().getContentResolver(),
                     Settings.System.STATUS_BAR_CARRIER_COLOR, intHex);
+            return true;
+        } else if (preference == mStatusBarCarrier) {
+            boolean value = (Boolean) newValue;
+            Settings.System.putInt(getActivity().getContentResolver(),
+                    Settings.System.STATUS_BAR_CARRIER, value ? 1 : 0);
             return true;
         }
         return false;
